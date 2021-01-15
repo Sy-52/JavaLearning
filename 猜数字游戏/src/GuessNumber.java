@@ -9,39 +9,47 @@ public class GuessNumber {
            如果猜对，恭喜用户。并进入下一轮游戏。
      */
     public static void main(String[] args) {
-        //录入用户指定的起始范围、终止范围
+        //用户输入猜数字的起始、终止范围
         System.out.println("猜数字游戏开始！请输入猜数字游戏范围的起始数字：");
         Scanner in = new Scanner(System.in);
         int guessNum = in.nextInt();
         int rangeStart = guessNum;
         System.out.println("请输入猜数字游戏范围的终止数字：");
-        guessNum = in.nextInt(); 
+        guessNum = in.nextInt();
         int rangeEnd = guessNum;
-        
-        // 随机数、总猜测次数、游戏开关、玩游戏的总轮次、总共正确的轮数
+
+        //num表示随机生成的数
         int num = 0;
-        double randNum = Math.random();
+
+        //总猜测次数
         int guessTotal = 5;
-        boolean stopGame = false;
+
+        //玩家总共玩了多少次游戏
         int totalGameCount = 0;
+
+        //玩家总共猜中了多少次
         int totalCorrectCount = 0;
 
-        //开始游戏
+        //游戏开关
+        boolean stopGame = false;
+
+        //游戏开始
         while (!stopGame) {
-             //如果用户上一轮猜测次数用完也没有猜对...那么安慰用户，并公布正确数字
+            //如果用户上一轮猜测次数用完也没有猜对...那么安慰用户，并公布正确数字
             if(guessTotal == 0){
+                //游戏的总轮次要加1
                 totalGameCount++;
                 System.out.println("很遗憾您没有猜中...不要灰心，请继续努力！正确的数字是:" + num);
                 System.out.println("您一共玩了" + totalGameCount + "轮，猜中了" + totalCorrectCount + "次。");
             }
-            
-            //在起始范围与终止范围间生成一个随机数,注意随机数生成采用的数学方法
-            randNum = Math.random();
+
+            //每一轮游戏都在此先生成一个随机数,注意随机数生成所采用的数学方法
+            double randNum = Math.random();
             int mod = rangeEnd - rangeStart;
             num = (int) (randNum * rangeEnd * 100) % mod;
             num += rangeStart;
 
-            //一轮游戏结束之后，先重置总猜测次数。否则如果上一轮猜测次数还有剩余的话，下一轮打印的guessTotal会出错
+            //每一轮游戏结束后，重置总猜测次数。否则若上一轮猜测次数有剩余的话，下面打印的guessTotal会出错
             guessTotal = 5;
             System.out.println("剩余猜测次数为" + guessTotal + "，请输入你要猜测的数字。猜测范围为：(" + rangeStart + "," + rangeEnd + ").输入-1结束游戏。");
             guessNum = in.nextInt();
