@@ -9,4 +9,17 @@ public class LittleSuperMarket {
     public Merchandise[] merchandise;
     //对应上方的merchandise数组，表示每种商品分别卖了多少个
     public int[] merchandiseSold;
+
+    //计算利润最高的商品
+    public Merchandise getBiggestProfitMerchandise(){
+        double profit = 0.0;
+        Merchandise m = new Merchandise();
+        for(int i = 0; i < merchandise.length; i++){
+            if(profit < (merchandise[i].soldPrice - merchandise[i].purchasePrice)){
+                profit = merchandise[i].soldPrice - merchandise[i].purchasePrice;
+                m = merchandise[i];
+            }
+        }
+        return m;
+    }
 }
