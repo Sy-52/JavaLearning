@@ -39,14 +39,18 @@ public class RunLittleSuperMarketAppMainV2 {
         System.out.println("今天的营业额:" + littleSuperMarket.incomingSum);
         System.out.println("共有商品:" + littleSuperMarket.merchandise.length + "种");
 
-        //知识点1 - 方法的返回值。
+        //语法点1 - 方法的返回值。
+        System.out.println("下面请净利润最高的商品做自我介绍：");
         littleSuperMarket.getBiggestProfitMerchandise().describe();
 
-        //知识点2 - 方法的参数
+        //语法点2 - 方法的参数
         Scanner scanner = new Scanner(System.in);
-        System.out.println("今天本超市全场半价优惠！本超市提供" + all.length + "种商品。请选择您要购买的商品编号：(退出购买请输入-1)");
         while(true) {
+            System.out.println("今天本超市全场半价优惠！本超市提供" + all.length + "种商品。请选择您要购买的商品编号：(退出购买请输入-1)");
             int index = scanner.nextInt() - 1;
+            Merchandise m = all[index];
+            // >> TODO 方法的形参可以是任何类型，包括自定义类型
+            System.out.println("该商品的总利润是超市里所有商品中最高的：" + m.isTheBiggestTotalValueOne(littleSuperMarket));
             if (index < 0) {
                 break;
             }
@@ -56,14 +60,19 @@ public class RunLittleSuperMarketAppMainV2 {
             } else {
                 System.out.println("请输入您要购买的数量：");
                 int countToBuy = scanner.nextInt();
-                Merchandise m = all[index];
-                // >> TODO 注意下面这个buy().countToBuy叫做实际参数。
-                double totalCost = m.buy(countToBuy);
+                // >> TODO halfPriceBuy()中，countToBuy叫做实际参数。
+                //double totalCost = m.halfPriceBuy(countToBuy);
+                // >> TODO 一个方法可以传递多个参数，且参数的类型可以各不相同
+                double totalCost = m.halfPriceBuyAndPrintLeft(countToBuy,true);
                 if(totalCost == -1){
                     System.out.println("抱歉！商品库存不足!");
+                    continue;
                 }else{
-                    System.out.println("您要购买的" + countToBuy + "件" + m.name + "的单价为：" + m.soldPrice + ".今天超市全场商品第二件半价优惠！总价为：" + totalCost);
-                    break;
+                    System.out.println("您购买的" + countToBuy + "件" + m.name + "的单价为：" + m.soldPrice + ".今天超市全场商品第二件半价优惠！总价为：" + totalCost);
+                    // >> TODO 方法的形参可以是自己本身这种类型
+                    Merchandise judgeMerchandise = all[199];
+                    System.out.println("商品200目前的总价值比用户购买商品目前的总价值大：" + m.totalValueBiggerThan(judgeMerchandise));
+                    continue;
                 }
             }
         }

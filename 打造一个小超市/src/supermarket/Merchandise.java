@@ -1,5 +1,7 @@
 package supermarket;
 
+import org.w3c.dom.ls.LSOutput;
+
 public class Merchandise {
     public String name;
     public int id;
@@ -34,7 +36,7 @@ public class Merchandise {
     // >> TODO buy()用以返回【在超市半价活动时】，客户购买的商品的总价
     // >> TODO 若返回值为负数，则代表商品库存不足
     // >> TODO 参数的定义格式为：类型名 + 标识符。countToBug叫形式参数。
-    public double buy(int countToBuy){
+    public double halfPriceBuy(int countToBuy){
         if(countToBuy > count){
             return -1;
         }else{
@@ -46,7 +48,54 @@ public class Merchandise {
         }
     }
 
-    public double buyAndPrintLeft(int countToBuy, boolean printLeft){
+    // >> TODO halfPriceBuyAndPrintLeft()为halfPriceBuy()方法的进阶版。
+    public double halfPriceBuyAndPrintLeft(int countToBuy, boolean printLeft){
+        if(count < countToBuy){
+            if(printLeft){
+                System.out.println(name + "的剩余库存为：" + count);
+            }
+            return -1;
+        }
+        double totalCost = 0.0;
+        int fullPriceCount = countToBuy/2 + countToBuy%2;
+        int halfPriceCount = countToBuy - fullPriceCount;
+        totalCost = soldPrice * fullPriceCount + (soldPrice/2 * halfPriceCount);
+        count -= countToBuy;
+        if(printLeft){
+            System.out.println(name + "的剩余库存为：" + count);
+        }
+        return totalCost;
+    }
 
+    // >> TODO totalValueBiggerThan()用于判断【调用该方法的商品的目前总价值】与【传入的商品的目前总价值】的大小
+    public boolean totalValueBiggerThan(Merchandise merchandise){
+        //这里直接return而非用if...else，注意这个小技巧
+        return count * purchasePrice < merchandise.count * merchandise.purchasePrice;
+    }
+
+    // >> TODO isTheBiggestTotalValueOne()用于判断【调用该方法的商品的总利润】是否是】超市中所有商品】中最大的
+    public boolean isTheBiggestTotalValueOne(LittleSuperMarket littleSuperMarket){
+        double totalValue = count * this.calculateProfit();
+        for(int i = 0; i < littleSuperMarket.merchandise.length; i++){
+            Merchandise m = littleSuperMarket.merchandise[i];
+            double nowTotalValue = m.count * m.calculateProfit();
+            if(nowTotalValue > totalValue){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    //hasEnoughCountFor()用以检查调用方法的商品的库存是否足够
+    public boolean hasEnoughCountFor(int count){
+        System.out.println("Merchandise类的hasEnoughCountFor方法使用的对象是：" + this);
+        return this.count > count;
+    }
+
+    //addCount()用以在调用该方法的对象的成员变量上添加库存
+    public void addCount(int count){
+        System.out.println("Merchandise类的addCount方法使用的对象是：" + this);
+        this.count += count;
+        System.out.println("补充库存！库存剩余数量为：" + this.count);
     }
 }

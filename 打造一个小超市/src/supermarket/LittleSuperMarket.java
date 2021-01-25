@@ -12,6 +12,8 @@ public class LittleSuperMarket {
 
     // >>TODO getBiggestProfitMerchandise()用以返回【超市中所有商品里净利润最高的商品】的引用。该方法的返回值为Merchandise()类型。
     public Merchandise getBiggestProfitMerchandise(){
+        //this自引用指向的是调用该方法的对象(保存的是该对象的地址）
+        System.out.println("LittleSuperMarket类的getBiggestProfitMerchandise方法使用的对象是：" + this);
         Merchandise curr = null;
         for(int i = 0; i < merchandise.length; i++){
             Merchandise m = merchandise[i];
