@@ -1,6 +1,7 @@
 package supermarket;
 
 public class Merchandise {
+    //所有的代码都在方法里。给成员变量赋初值的代码在内部会变成<init>方法。
     public String name;
     public int id;
     //count:商品的库存
@@ -8,6 +9,26 @@ public class Merchandise {
     //soldPrice:售价；purchasePrice:进价
     public double soldPrice;
     public double purchasePrice;
+
+    // >> TODO 知识点：构造方法
+    public Merchandise(String name, int id, int count, double soldPrice, double purchasePrice){
+        this.name = name;
+        this.id = id;
+        this.count = count;
+        this.soldPrice = soldPrice;
+        this.purchasePrice = purchasePrice;
+    }
+
+    // >> TODO 知识点：构造方法的重载
+    // >> TODO 在构造方法里才能在【第一行】调用重载的构造方法。语法为this(实参列表);
+    // >> TODO 构造方法里不能自己调用自己形成死循环。也不可以使用成员变量，因为从语意上讲，这个对象还没有被初始化完成，处于中间状态。
+    public Merchandise(String name, int id, int count, double soldPrice){
+        this(name, id, count, soldPrice,soldPrice * 0.8);
+    }
+
+    public Merchandise(){
+        this("无名", 000, 0, 1, 1.1);
+    }
 
     // >> TODO 方法名：任意合法的标识符
     // >> TODO 一个方法只能有一种返回值，用return语句返回方法的返回值。无需返回值则用void表示。（return、void为java中的关键字）
@@ -122,4 +143,35 @@ public class Merchandise {
             makeEnoughForOneByOne(count);
         }
     }
+
+    // >> TODO 静态变量。命名规范通常为【全大写 + 下划线】分割，不要使用magic number.（没有名字，不知道干啥的数字...）
+    // >> TODO 下面的DISCOUNT_FOR_VIP为所有包中的所有类公用。
+    public static double DISCOUNT_FOR_VIP = 0.9;
+
+    // >> TODO 静态方法没有this自引用，故不能【直接】访问成员变量
+    // >> TODO 但是你可以在静态方法中自己创建对象/通过传入参数，来获得对象的引用，进而访问成员变量
+    public static double getDiscountOnDiscount(){
+        return DISCOUNT_FOR_VIP;
+    }
+
+    // >> TODO 方法签名是一个方法在一个类中的唯一标识。方法签名：方法名 + 依次参数类型
+    // >> TODO 若一个类中定义了名字相同，方法签名不同的方法，就叫做方法的重载
+    // >> TODO 返回值不算是方法签名，重载的方法可以有完全不同的返回值类型
+    public double buy(int count, boolean isVIP){
+        if(this.count < count){
+            return -1;
+        }
+        this.count -= count;
+        double totalCost = count * this.soldPrice;
+        if(isVIP){
+            return totalCost * DISCOUNT_FOR_VIP;
+        }else{
+            return totalCost;
+        }
+    }
+
+    public double buy(int count){return buy(count,false);}
+
+    // >> TODO 重载的方法可以调用别的重载方法，也可以调用其他别的不重载的方法
+    public double buy(){return buy(1);}
 }
