@@ -1,7 +1,5 @@
 package supermarket;
 
-import org.w3c.dom.ls.LSOutput;
-
 public class Merchandise {
     public String name;
     public int id;
@@ -11,9 +9,9 @@ public class Merchandise {
     public double soldPrice;
     public double purchasePrice;
 
-    // >> TODO describle()，用以输出调用此方法的对象的基本信息。
-    // >> TODO 一个方法只能有一种返回值，用return语句返回方法的返回值。无需返回值则用void表示。（return、void为java中的关键字）
     // >> TODO 方法名：任意合法的标识符
+    // >> TODO 一个方法只能有一种返回值，用return语句返回方法的返回值。无需返回值则用void表示。（return、void为java中的关键字）
+    //describle()，用以输出调用此方法的对象的基本信息。
     public void describe(){
         //netIncome为方法中定义的局部变量。describe方法中可使用类的成员变量，也可使用自定义的局部变量
         double netIncome = soldPrice - purchasePrice;
@@ -21,11 +19,12 @@ public class Merchandise {
                 ".商品的进价是" + purchasePrice + ".商品的净利润为" + netIncome + ".商品的库存为" + count);
     }
 
-    // >> TODO calculateProfit()用以返回调用此方法的对象的净利润。该方法的返回值为基础数据类型。
+
     // >> TODO 返回值必须要能用来给返回值类型的变量赋值
+    //calculateProfit()用以返回调用此方法的对象的净利润。该方法的返回值为【基础数据类型】。
     public double calculateProfit(){
         double profit = soldPrice - purchasePrice;
-        //return必须是所在代码块的最后一个语句，否则就会语法错误
+        // >> TODO 知识点：return必须是所在代码块的最后一个语句，否则就会语法错误
         if(profit <= 0 ){
             return 0;
         }
@@ -33,10 +32,10 @@ public class Merchandise {
         return (int)profit;
     }
 
-    // >> TODO buy()用以返回【在超市半价活动时】，客户购买的商品的总价
-    // >> TODO 若返回值为负数，则代表商品库存不足
     // >> TODO 参数的定义格式为：类型名 + 标识符。countToBug叫形式参数。
+    //buy()用以返回【在超市半价活动时】，客户购买的商品的总价
     public double halfPriceBuy(int countToBuy){
+        //若返回值为负数，则代表商品库存不足
         if(countToBuy > count){
             return -1;
         }else{
@@ -48,7 +47,8 @@ public class Merchandise {
         }
     }
 
-    // >> TODO halfPriceBuyAndPrintLeft()为halfPriceBuy()方法的进阶版。
+    // >> TODO 一个方法可以传递多个参数，且参数的类型可以各不相同
+    //halfPriceBuyAndPrintLeft()为halfPriceBuy()方法的进阶版。
     public double halfPriceBuyAndPrintLeft(int countToBuy, boolean printLeft){
         if(count < countToBuy){
             if(printLeft){
@@ -67,13 +67,15 @@ public class Merchandise {
         return totalCost;
     }
 
-    // >> TODO totalValueBiggerThan()用于判断【调用该方法的商品的目前总价值】与【传入的商品的目前总价值】的大小
+    // >> TODO 方法的形参可以是自己本身这种类型
+    //totalValueBiggerThan()用于判断【调用该方法的商品的目前总价值】与【传入的商品的目前总价值】的大小
     public boolean totalValueBiggerThan(Merchandise merchandise){
         //这里直接return而非用if...else，注意这个小技巧
         return count * purchasePrice < merchandise.count * merchandise.purchasePrice;
     }
 
-    // >> TODO isTheBiggestTotalValueOne()用于判断【调用该方法的商品的总利润】是否是】超市中所有商品】中最大的
+    // >> TODO 方法的形参可以是任何类型，包括自定义类型
+    //isTheBiggestTotalValueOne()用于判断【调用该方法的商品的总利润】是否是】超市中所有商品】中最大的
     public boolean isTheBiggestTotalValueOne(LittleSuperMarket littleSuperMarket){
         double totalValue = count * this.calculateProfit();
         for(int i = 0; i < littleSuperMarket.merchandise.length; i++){
@@ -89,7 +91,7 @@ public class Merchandise {
     //hasEnoughCountFor()用以检查调用方法的商品的库存是否足够
     public boolean hasEnoughCountFor(int count){
         System.out.println("Merchandise类的hasEnoughCountFor方法使用的对象是：" + this);
-        return this.count > count;
+        return this.count >= count;
     }
 
     //addCount()用以在调用该方法的对象的成员变量上添加库存
@@ -97,5 +99,27 @@ public class Merchandise {
         System.out.println("Merchandise类的addCount方法使用的对象是：" + this);
         this.count += count;
         System.out.println("补充库存！库存剩余数量为：" + this.count);
+    }
+
+    // >> TODO 知识点：封装
+    // >> TODO 将补充库存的程序封装在了makeEnoughFor()中
+    public void makeEnoughFor(int count){
+        //在同一个类的对象上调用同一个类的不同方法，如下面的hasEnoughCountFor()
+        boolean hasEnough = hasEnoughCountFor(count);
+        if(!hasEnough){
+            int toBeAdded = count - this.count;
+            addCount(toBeAdded);
+        }
+    }
+
+    //makeEnoughFor()的升级版，模拟工人一个接一个搬商品进库存的过程
+    public void makeEnoughForOneByOne(int count){
+        boolean hasEnough = hasEnoughCountFor(count);
+        if(!hasEnough){
+            addCount(1);
+            //下面传入的不能是this.count...想想逻辑
+            //在类的方法中调用自己，递归
+            makeEnoughForOneByOne(count);
+        }
     }
 }

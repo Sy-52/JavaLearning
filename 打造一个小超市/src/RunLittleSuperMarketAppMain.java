@@ -4,18 +4,17 @@ import java.util.Scanner;
 
 public class RunLittleSuperMarketAppMain {
     public static void main(String[] args) {
-        LittleSuperMarket littleSuperMarket = new LittleSuperMarket();
-        littleSuperMarket.superMarketName = "大润发";
-        littleSuperMarket.address = "莲花南路1号";
-        littleSuperMarket.parkingCount = 200;
-        littleSuperMarket.incomingSum = 0.0;
+        // >> TODO 注明：RunLittleSuperMarketAppMain.java是最初的版本，该程序主要写的是开超市的逻辑，基本没有语法点。
+
+        // >> TODO 知识点：创建一个构造方法。简化main()中的逻辑
+        LittleSuperMarket littleSuperMarket = new LittleSuperMarket("百伦广场","DJY大道211号",200,0.0);
         littleSuperMarket.merchandise = new Merchandise[200];
         littleSuperMarket.merchandiseSold = new int[littleSuperMarket.merchandise.length];
 
-        //将littleSuperMarket.merchandise这个引用赋给all，避免前面那个长串字符的重复
+        //将littleSuperMarket.merchandise这个引用赋给all，避免该长串字符的重复
         Merchandise[] all = littleSuperMarket.merchandise;
 
-        //给200件商品添加基本信息
+        //初始化200件商品
         for(int i = 0; i < all.length; i++){
             /*
                 这里先创建一个Merchandise类的实例m再赋值给all[i]的原因为：
@@ -65,7 +64,6 @@ public class RunLittleSuperMarketAppMain {
             double totalCost = 0;
             while(true) {
                 System.out.println("本超市提供" + all.length + "种商品。请选择您要购买的商品编号：(退出购买请输入-1)");
-                //此处应有输入判断
                 int index = scanner.nextInt() - 1;
                 if(index < 0){
                     break;
