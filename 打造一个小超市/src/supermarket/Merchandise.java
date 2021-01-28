@@ -2,13 +2,13 @@ package supermarket;
 
 public class Merchandise {
     //所有的代码都在方法里。给成员变量赋初值的代码在内部会变成<init>方法。
-    public String name;
-    public int id;
+    private String name;
+    private int id;
     //count:商品的库存
-    public int count;
+    private int count;
     //soldPrice:售价；purchasePrice:进价
-    public double soldPrice;
-    public double purchasePrice;
+    private double soldPrice;
+    private double purchasePrice;
 
     // >> TODO 知识点：构造方法
     public Merchandise(String name, int id, int count, double soldPrice, double purchasePrice){
@@ -99,8 +99,8 @@ public class Merchandise {
     //isTheBiggestTotalValueOne()用于判断【调用该方法的商品的总利润】是否是】超市中所有商品】中最大的
     public boolean isTheBiggestTotalValueOne(LittleSuperMarket littleSuperMarket){
         double totalValue = count * this.calculateProfit();
-        for(int i = 0; i < littleSuperMarket.merchandise.length; i++){
-            Merchandise m = littleSuperMarket.merchandise[i];
+        for(int i = 0; i < littleSuperMarket.getMerchandise().length; i++){
+            Merchandise m = littleSuperMarket.getMerchandise()[i];
             double nowTotalValue = m.count * m.calculateProfit();
             if(nowTotalValue > totalValue){
                 return false;
@@ -174,4 +174,25 @@ public class Merchandise {
 
     // >> TODO 重载的方法可以调用别的重载方法，也可以调用其他别的不重载的方法
     public double buy(){return buy(1);}
+
+    //封装了成员变量，写了接口方法
+    public String getMerchandiseName(){return this.name;}
+
+    public void setMerchandiseName(String name){this.name = name;}
+
+    public int getMerchandiseId(){return this.id;}
+
+    public void setMerchandiseId(int id){this.id = id;}
+
+    public int getMerchandiseCount(){return this.count;}
+
+    public void setMerchandiseCount(int count){this.count = count;}
+
+    public double getMerchandiseSoldPrice(){return this.soldPrice;}
+
+    public void setMerchandiseSoldPrice(double soldPrice){this.soldPrice = soldPrice;}
+
+    public double getMerchandisePurchasePrice(){return this.purchasePrice;}
+
+    public void setMerchandisePurchasePrice(){this.purchasePrice = purchasePrice;}
 }
