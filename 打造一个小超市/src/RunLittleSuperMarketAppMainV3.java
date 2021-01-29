@@ -1,4 +1,3 @@
-import jdk.swing.interop.SwingInterOpUtils;
 import supermarket.*;
 
 //导入静态方法
@@ -17,7 +16,7 @@ public class RunLittleSuperMarketAppMainV3 {
         System.out.println("本店地址：" + littleSuperMarket.getAddress());
         System.out.println("共有停车位：" + littleSuperMarket.getParkingCount());
         System.out.println("今天的营业额:" + littleSuperMarket.getIncomingSum());
-        System.out.println("共有商品:" + littleSuperMarket.getMerchandise().length + "种");
+        System.out.println("共有商品:" + all.length + "种");
 
         System.out.println("LittleSuperMarket类的对象是：" + littleSuperMarket);
         Merchandise m = littleSuperMarket.getBiggestProfitMerchandise();
@@ -40,12 +39,12 @@ public class RunLittleSuperMarketAppMainV3 {
         System.out.println(getDiscountOnDiscount());
     }
 
-    // >> TODO 静态变量被放在<clinit>方法中。
+    // >> TODO 知识点：静态变量。静态变量被java放在<clinit>方法中。
     public static double BASE_DISCOUNT;
 
     public static double VIP_DISCOUNT;
 
-    // >> TODO 在main()外写一个静态代码块，java会在class（装载该.java文件到进程）初始化的时候先跑一遍
+    // >> TODO 知识点：静态代码块。在main()外写一个静态代码块，java会在class（装载该.java文件到进程）初始化的时候先跑一遍
     static {
         BASE_DISCOUNT = 0.8;
         VIP_DISCOUNT = 0.75;

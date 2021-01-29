@@ -1,6 +1,7 @@
 package supermarket;
 
 public class LittleSuperMarket {
+    //私有化LittleSuperMarket类的所有成员变量
     private String superMarketName;
     private String address;
     private int parkingCount;
@@ -9,9 +10,6 @@ public class LittleSuperMarket {
     //merchandiseSold表明每种商品分别卖了多少个
     private int[] merchandiseSold;
 
-    // >> TODO 构造方法的方法名必须与类名一样，且没有返回值。（有返回值也没有意义，因为new操作符永远返回的是创建出来的对象的引用）
-    // >> TODO 若没有显示的添加一个构造方法，java的每个类都会自带一个无参数的构造方法，所以我们一直都在使用构造方法。
-    // >> TODO 若我们自己添加了类构造方法，java就不会再添加无参数的构造方法了，即：我们不能直接new一个对象而不传递参数了
     public LittleSuperMarket(String superMarketName, String address, int parkingCount, double incomingSum){
         this.superMarketName = superMarketName;
         this.address = address;
@@ -21,8 +19,7 @@ public class LittleSuperMarket {
         this.merchandiseSold = new int[this.merchandise.length];
 
         //初始化200件商品
-        Merchandise[] all = this.merchandise;
-        for(int i = 0; i < all.length; i++){
+        for(int i = 0; i < this.merchandise.length; i++){
             /*
                 以下为老式初始化的注释：
                 这里先创建一个Merchandise类的实例m再赋值给all[i]的原因为：
@@ -30,17 +27,17 @@ public class LittleSuperMarket {
                 里面的数组元素littleSuperMarket.merchandise[i]的值仍然为null.
                 所以如果直接用all[i].count = 200去给成员变量赋值的话，会报NPE
             */
-            String name = "商品" + (i + 1);
-            int id = i;
-            all[i] = new Merchandise(name,id,200,(1 + Math.random()) * 200,Math.random() * 200);
+            this.merchandise[i] = new Merchandise("商品" + (i + 1),i,200,(1 + Math.random()) * 200,Math.random() * 200);
         }
     }
 
-    //getBiggestProfitMerchandise()用以返回【超市中所有商品里净利润最高的商品】的引用。该方法的返回值为Merchandise()类型。
+    //getBiggestProfitMerchandise()用以返回LittleSuperMarket.merchandise[]中净利润最高的商品的引用。该方法的返回值为Merchandise类型。
     public Merchandise getBiggestProfitMerchandise(){
         // >> TODO 知识点：this自引用指向的是调用该方法的对象(保存的是该对象的地址）
         System.out.println("LittleSuperMarket类的getBiggestProfitMerchandise方法使用的对象是：" + this);
         Merchandise curr = null;
+        // >> TODO 知识点：下面为什么能用private修饰的merchandise而不报错？
+        // >> TODO 知识点: private修饰的成员变量只有该类能访问；缺省的访问修饰符修饰的成员变量只有包中的类能访问;public修饰的就不多赘述了
         for(int i = 0; i < merchandise.length; i++){
             Merchandise m = merchandise[i];
             //若超市只卖一种商品，做如下处理
@@ -55,7 +52,7 @@ public class LittleSuperMarket {
         return curr;
     }
 
-    //封装了成员变量，写了接口方法
+    //对封装的成员变量提供get、set方法
     public String getSuperMarketName(){return this.superMarketName;}
 
     public void setSuperMarketName(String name){this.superMarketName = name;}

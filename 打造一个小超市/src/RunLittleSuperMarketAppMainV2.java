@@ -15,7 +15,7 @@ public class RunLittleSuperMarketAppMainV2 {
         System.out.println("本店地址：" + littleSuperMarket.getAddress());
         System.out.println("共有停车位：" + littleSuperMarket.getParkingCount());
         System.out.println("今天的营业额:" + littleSuperMarket.getIncomingSum());
-        System.out.println("共有商品:" + littleSuperMarket.getMerchandise().length + "种");
+        System.out.println("共有商品:" + all.length + "种");
 
         // >> TODO 知识点：方法的返回值。
         System.out.println("下面请净利润最高的商品做自我介绍：");

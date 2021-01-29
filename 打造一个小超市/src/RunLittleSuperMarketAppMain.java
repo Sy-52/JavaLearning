@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class RunLittleSuperMarketAppMain {
     public static void main(String[] args) {
-        // >> TODO 注明：RunLittleSuperMarketAppMain.java是最初的版本，该程序主要写的是开超市的逻辑，基本没有语法点。
+        // >> TODO 注明：RunLittleSuperMarketAppMain.java是最初的版本，该程序主要写的是开超市的逻辑。
 
-        // >> TODO 知识点：创建一个构造方法。简化main()中的逻辑
+        // >> TODO 知识点：使用littleSuperMarket类的构造方法，并用构造方法来初始化，能比最开始全部代码写在这里极大的简化main()中的逻辑
         LittleSuperMarket littleSuperMarket = new LittleSuperMarket("百伦广场","DJY大道211号",200,0.0);
 
         Merchandise[] all = littleSuperMarket.getMerchandise();
@@ -72,6 +72,7 @@ public class RunLittleSuperMarketAppMain {
                             totalCost += numToBuy * m.getMerchandiseSoldPrice();
                             customer.setCustomerMoney(customer.getCustomerMoney() - totalCost);
                             m.setMerchandiseCount(m.getMerchandiseCount() -  numToBuy);
+                            // >> TODO 下面这句为什么能行？细品
                             littleSuperMarket.getMerchandiseSold()[index] += numToBuy;
                         }
                     }
