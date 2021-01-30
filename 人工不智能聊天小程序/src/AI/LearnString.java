@@ -1,3 +1,5 @@
+package AI;
+
 public class LearnString {
     public static void main(String[] args) {
         String content = "01234567ABCDefgh";
@@ -49,5 +51,8 @@ public class LearnString {
         System.out.println(content2.equals(content2_2));
 
         System.out.println(content2.equalsIgnoreCase(content2_2));
+
+        System.out.println(content2.replace("Banana","Fan"));
     }
+
 }
