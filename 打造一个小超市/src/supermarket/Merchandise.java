@@ -199,5 +199,5 @@ public class Merchandise {
 
     public double getMerchandisePurchasePrice(){return this.purchasePrice;}
 
-    public void setMerchandisePurchasePrice(){this.purchasePrice = purchasePrice;}
+    public void setMerchandisePurchasePrice(double purchasePrice){this.purchasePrice = purchasePrice;}
 }
