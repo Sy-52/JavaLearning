@@ -7,7 +7,7 @@ public class LearnString {
         //String的length()是方法而非成员变量
         System.out.println(content.length());
 
-        // >> TODO 知识点：String类用来存储字符串的数据是private的，且不提供任何修改内容的方法。
+        // >> TODO 知识点：String类用来存储字符串的变量是private的，且不提供任何修改变量的方法。
         // >> TODO 所以String对象一旦生成，其内容就不可能被修改
         // >> TODO 下面的方法，都不会改变原来的字符串content，全是返回一个new出来的新的String类的对象
         System.out.println(content.toUpperCase());
