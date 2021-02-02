@@ -18,7 +18,7 @@ public class LittleSuperMarket {
         this.merchandise = new Merchandise[200];
         this.merchandiseSold = new int[this.merchandise.length];
 
-        //初始化200件商品
+        //初始化200件商品，并对每10件、每100件商品做特殊赋值
         for(int i = 0; i < this.merchandise.length; i++){
             /*
                 以下为老式初始化的注释：
@@ -27,7 +27,19 @@ public class LittleSuperMarket {
                 里面的数组元素littleSuperMarket.merchandise[i]的值仍然为null.
                 所以如果直接用all[i].count = 200去给成员变量赋值的话，会报NPE
             */
-            this.merchandise[i] = new Merchandise("商品" + (i + 1),i,200,(1 + Math.random()) * 200,Math.random() * 200);
+            if(i > 0 && i % 100 == 0){
+                this.merchandise[i] = new ShellColorChangePhone(
+                        "手机" + i, i, 200, 1999, 999, 4.5, 3.5,
+                        4, 128, "三星change", "Android", false
+                );
+            }else if(i > 0 && i % 10 == 0){
+                this.merchandise[i] = new Phone(
+                        "手机" + i, i, 200, 1999, 999, 4.5, 3.5,
+                        4, 128, "索尼normal", "Android"
+                );
+            }else {
+                this.merchandise[i] = new Merchandise("商品" + i, i, 200, (1 + Math.random()) * 200, Math.random() * 200);
+            }
         }
     }
 

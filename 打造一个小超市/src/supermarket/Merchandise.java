@@ -28,7 +28,7 @@ public class Merchandise {
     }
 
     public Merchandise(){
-        this("无名", 000, 0, 1, 1.1);
+        this("无名", 0, 0, 1.1, 1);
     }
 
     // >> TODO 方法名：任意合法的标识符
@@ -120,8 +120,10 @@ public class Merchandise {
     // >> TODO 返回值不算是方法签名，重载的方法可以有完全不同的返回值类型
     public double buy(int count, boolean isVIP){
         if(this.count < count){
+            System.out.println("抱歉！库存不足！");
             return -1;
         }
+        System.out.println("恭喜您！购买成功！");
         this.count -= count;
         double totalCost = count * this.soldPrice;
         if(isVIP){
