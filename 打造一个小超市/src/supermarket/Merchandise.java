@@ -119,6 +119,7 @@ public class Merchandise {
     // >> TODO 若一个类中定义了名字相同，方法签名不同的方法，就叫做方法的重载
     // >> TODO 返回值不算是方法签名，重载的方法可以有完全不同的返回值类型
     public double buy(int count, boolean isVIP){
+        System.out.println("Merchandise类中的buy(int count,boolean isVIP)被调用了");
         if(this.count < count){
             System.out.println("抱歉！库存不足！");
             return -1;
@@ -138,6 +139,26 @@ public class Merchandise {
     // >> TODO 重载的方法可以调用别的重载方法，也可以调用其他别的不重载的方法
     public double buy(){return buy(1);}
 
+    public double buy(boolean reallyBuy){
+        System.out.println("Merchandise类中的buy(boolean reallyBuy)被调用了");
+        if(reallyBuy){
+            return this.buy(1);
+        }else{
+            return -1;
+        }
+    }
+
+    // >> TODO 知识点：封装，将补充库存的程序封装在了makeEnoughFor()中
+    public void makeEnoughFor(int count){
+        System.out.println("Merchandise类的makeEnoughFor方法使用的对象是：" + this);
+        // >> TODO 知识点：在同一个类的对象上调用同一个类的不同方法，如下面的hasEnoughCountFor()
+        boolean hasEnough = hasEnoughCountFor(count);
+        if(!hasEnough){
+            int toBeAdded = count - this.count;
+            addCount(toBeAdded);
+        }
+    }
+
     //hasEnoughCountFor()用以检查【调用方法的商品的库存】是否足够
     public boolean hasEnoughCountFor(int count){
         System.out.println("Merchandise类的hasEnoughCountFor方法使用的对象是：" + this);
@@ -149,16 +170,6 @@ public class Merchandise {
         System.out.println("Merchandise类的addCount方法使用的对象是：" + this);
         this.count += count;
         System.out.println("补充库存！库存剩余数量为：" + this.count);
-    }
-
-    // >> TODO 知识点：封装，将补充库存的程序封装在了makeEnoughFor()中
-    public void makeEnoughFor(int count){
-        // >> TODO 知识点：在同一个类的对象上调用同一个类的不同方法，如下面的hasEnoughCountFor()
-        boolean hasEnough = hasEnoughCountFor(count);
-        if(!hasEnough){
-            int toBeAdded = count - this.count;
-            addCount(toBeAdded);
-        }
     }
 
     //makeEnoughFor()的升级版，模拟工人一个接一个搬商品进库存的过程

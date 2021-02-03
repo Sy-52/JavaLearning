@@ -63,6 +63,7 @@ public class Phone extends Merchandise{
     // >> TODO 知识点：覆盖(override)。覆盖才是继承的精髓。
     // >> TODO 子类使用和父类【方法签名一样、返回值也一样】的方法，可以让子类override掉父类的方法
     public double buy(int count){
+        System.out.println("Phone类中的buy(int count)被调用了");
         if(count > MAX_BUY_ONE_ORDER){
             System.out.println("抱歉！一次性最多只能购买" + (int)MAX_BUY_ONE_ORDER + "个手机！");
             return -2;

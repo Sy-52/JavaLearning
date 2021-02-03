@@ -15,25 +15,32 @@ public class RunLittleSuperMarketAppMainV3 {
 
         //下面这句就是父类的引用指向子类的实例
         Merchandise m = littleSuperMarket.getBiggestProfitMerchandise();
+        System.out.println();
 
         System.out.println("下面请利润最高的商品做自我介绍：");
-        //m.describe()调用的是子类override掉的describe()
+        //m.describe()中this自引用指向的是子类实例，所以会调子类实例的describe()
         m.describe();
+        System.out.println();
+
         System.out.println("利润最高的Merchandise对象是：" + m);
         m.makeEnoughFor(500);
         //m.makeEnoughForOneByOne(500);
+        System.out.println();
 
         // >> TODO 知识点：方法的重载
         //这里有一个点。下面的cost为-2，costVip为17990.为何？思考
         double cost = m.buy(10);
+        System.out.println();
+        //下面这个方法我没有在Phone类中写override的方法，故而调用的是Merchandise类中的方法，竟然购买成功了。
         double costVip = m.buy(10,true);
-        m.describe();
+        System.out.println();
 
         // >> TODO 知识点：多态。
         // >> TODO 下面三句，describe()分别调用的是哪个类中的describe()？
         all[1].describe();
         all[10].describe();
         all[100].describe();
+        System.out.println();
 
         // >> TODO 静态方法
         // >> TODO 静态方法也可重载，重载规则和普通方法、构造方法重载的规则一样

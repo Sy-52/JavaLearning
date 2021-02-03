@@ -91,7 +91,7 @@ public class RunLittleSuperMarketAppMain {
         System.out.println("今日总的营业额为" + littleSuperMarket.getIncomingSum() + ".营业情况如下：");
         //拉一个销售清单
         for(int i = 0;i < all.length; i++){
-            //这里重新创建m的原因是因为变量的作用域问题
+            // >> TODO 这里为何要重新创建m？（变量的作用域）
             Merchandise m = all[i];
             int numSold = littleSuperMarket.getMerchandiseSold()[i];
             if( numSold!= 0){
