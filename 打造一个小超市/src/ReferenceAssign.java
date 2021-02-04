@@ -5,7 +5,7 @@ public class ReferenceAssign {
         // >> TODO 可以让一个父类的引用指向一个子类的实例，因为父类能做的子类都能做。但是只能像操作父类实例一样操作子类实例。
         Merchandise m = new Phone(
                 "手机001", 2, 100,1999, 999,
-                4.5, 3.5, 4, 128, "华为", "安卓"
+                4.5, 3.5, 4, 128, "华为", "安卓", null
         );
 
         //System.out.println(m.getPhoneBrand());
@@ -19,7 +19,7 @@ public class ReferenceAssign {
 
         ShellColorChangePhone shellColorChangePhone = new ShellColorChangePhone(
                 "手机002", 2, 100,1999, 999,
-                4.5, 3.5, 4, 128, "索尼", "安卓", false
+                4.5, 3.5, 4, 128, "索尼", "安卓", null, false
         );
 
         // >> TODO 思考，为何下面三行都可以。

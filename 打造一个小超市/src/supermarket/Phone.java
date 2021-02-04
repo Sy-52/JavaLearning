@@ -17,13 +17,17 @@ public class Phone extends Merchandise{
     private int memoryG;
     private int storageG;
     private String brand;
-    private String os;
+    private String os = "安卓";
+    // >> TODO 知识点：final修饰符
+    //private final Merchandise gift;
+    private Merchandise gift;
 
-    public static double MAX_BUY_ONE_ORDER = 5;
+    public double MAX_BUY_ONE_ORDER;
+
 
     public Phone(
             String name, int Id, int count, double soldPrice, double purchasePrice, double screenSize,
-            double cpuHZ, int memoryG, int storageG, String brand,String os){
+            double cpuHZ, int memoryG, int storageG, String brand, String os, Merchandise gift){
         //sub class并不能【直接】访问parent class的【private的属性和方法】，如下。
         //可以认为，创建子类对象的同时，也创建了一个隐藏的父类对象。所以我们才能setName，对name属性进行操作，如下
         //this.setMerchandiseName(name);this.setMerchandiseId(Id);this.setMerchandiseCount(count);
@@ -32,23 +36,31 @@ public class Phone extends Merchandise{
         super(name, Id, count, soldPrice, purchasePrice);
 
         //将初始化的代码封装在一个init()中，在构造方法中调用。
-        init(screenSize, cpuHZ, memoryG, storageG, brand, os);
-    }
-
-    public Phone(){
-        //如果在main()中调用的是该无参的构造方法，java会默认隐式的调用super(),即父类中【程序员自己"显式"定义】的无参的构造方法，父类中没有则会出错。
-        //若在父类中，程序员自己没有"显式"定义无参的构造方法，则在该子类的无参的构造方法中必须用super(参数1,参数2...)调用父类中写的重载的构造方法。
-        super();
-        init(4.5, 4.6, 6, 128, "Unknow", "Unknow");
-    }
-
-    public void init(double screenSize, double cpuHZ, int memoryG, int storageG, String brand,String os){
         this.screenSize = screenSize;
         this.cpuHZ = cpuHZ;
         this.memoryG = memoryG;
         this.storageG = storageG;
         this.brand = brand;
         this.os = os;
+        this.gift = gift;
+    }
+
+    public Phone(){
+        //如果在main()中调用的是该无参的构造方法，java会默认隐式的调用super(),即父类中【程序员自己"显式"定义】的无参的构造方法，父类中没有则会出错。
+        //若在父类中，程序员自己没有"显式"定义无参的构造方法，则在该子类的无参的构造方法中必须用super(参数1,参数2...)调用父类中写的重载的构造方法。
+        super();
+        //init( 4.5,4.6, 6, 128, "Unknow", "Unknow",null);
+        this.screenSize = 4.5;
+        this.cpuHZ = 4.6;
+        this.memoryG = 6;
+        this.storageG = 128;
+        this.brand = "Unknow";
+        this.os = "Unknow";
+        this.gift = null;
+    }
+
+    public void init(double screenSize, double cpuHZ, int memoryG, int storageG, String brand,String os,Merchandise gift){
+
     }
 
     public void describe(){
@@ -57,7 +69,8 @@ public class Phone extends Merchandise{
         System.out.println("手机厂商：" + this.brand + ";手机系统为:" + this.os + ";硬件配置如下:");
         System.out.println("屏幕:" + this.screenSize);
         System.out.println("CPU主频:" + this.screenSize + "GHZ");
-        System.out.println("内存" + this.storageG + "Gb");
+        System.out.println("内存:" + this.storageG + "Gb");
+        System.out.println("礼物:" + this.gift);
     }
 
     // >> TODO 知识点：覆盖(override)。覆盖才是继承的精髓。
@@ -108,4 +121,8 @@ public class Phone extends Merchandise{
     public String getPhoneOs(){return this.os;}
 
     public void setPhoneOs(String os){this.os = os;}
+
+    public Merchandise getGift(){return this.gift;}
+
+    public void setGift(Merchandise gift){this.gift = gift;}
 }

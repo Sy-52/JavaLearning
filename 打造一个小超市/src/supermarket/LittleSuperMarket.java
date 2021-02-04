@@ -6,8 +6,9 @@ public class LittleSuperMarket {
     private String address;
     private int parkingCount;
     private double incomingSum;
+    // >> TODO 知识点：final修饰符
+    //private final Merchandise[] merchandise;
     private Merchandise[] merchandise;
-    //merchandiseSold表明每种商品分别卖了多少个
     private int[] merchandiseSold;
 
     public LittleSuperMarket(String superMarketName, String address, int parkingCount, double incomingSum){
@@ -17,6 +18,8 @@ public class LittleSuperMarket {
         this.incomingSum = incomingSum;
         this.merchandise = new Merchandise[200];
         this.merchandiseSold = new int[this.merchandise.length];
+
+        Merchandise giftForPhone = new Merchandise("手机赠品-64g内存卡", 2, 999, 60, 30);;
 
         //初始化200件商品，并对每10件、每100件商品做特殊赋值
         for(int i = 0; i < this.merchandise.length; i++){
@@ -28,14 +31,15 @@ public class LittleSuperMarket {
                 所以如果直接用all[i].count = 200去给成员变量赋值的话，会报NPE
             */
             if(i > 0 && i % 100 == 0){
+                //giftForPhone = new Merchandise("手机赠品-128g内存卡", 1, 999, 120, 60);
                 this.merchandise[i] = new ShellColorChangePhone(
                         "手机" + i, i, 200, 1999, 999, 4.5, 3.5,
-                        4, 128, "三星change", "Android", false
+                        4, 128, "三星change", "Android", giftForPhone,false
                 );
             }else if(i > 0 && i % 10 == 0){
                 this.merchandise[i] = new Phone(
                         "手机" + i, i, 200, 1999, 999, 4.5, 3.5,
-                        4, 128, "索尼normal", "Android"
+                        4, 128, "索尼normal", "Android",giftForPhone
                 );
             }else {
                 this.merchandise[i] = new Merchandise("商品" + i, i, 200, (1 + Math.random()) * 200, Math.random() * 200);
