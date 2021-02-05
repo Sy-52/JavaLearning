@@ -188,9 +188,14 @@ public class Merchandise {
     public static double DISCOUNT_FOR_VIP = 0.9;
 
     // >> TODO 知识点：静态方法。静态方法没有this自引用，故不能【直接】访问成员变量；
-    // >> TODO 但是你可以在静态方法中自己创建对象/通过传入参数，来获得对象的引用，进而访问成员变量
+    // >> TODO 但是你可以在静态方法中自己创建对象/通过传入对象的引用，从而访问成员变量
     public static double getDiscountOnDiscount(){
         return DISCOUNT_FOR_VIP;
+    }
+
+    // >> TODO 静态方法要求签名相同，返回值也要相同。很像覆盖但却不是覆盖。
+    public static void staticMethod(){
+        System.out.println("staticMethod in Merchandise.");
     }
 
     //封装的成员变量的get、set方法

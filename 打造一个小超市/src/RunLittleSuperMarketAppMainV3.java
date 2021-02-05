@@ -47,12 +47,13 @@ public class RunLittleSuperMarketAppMainV3 {
         System.out.println(getDiscountOnDiscount());
     }
 
-    // >> TODO 知识点：静态变量。静态变量被java放在<clinit>方法中。
-    // >> TODO 静态变量老早就初始化好了，老早就可以用。不依赖于实例的创建。
+    // >> TODO 知识点：静态变量。
+    // >> TODO 静态变量被java放在<clinit>方法中，老早就初始化好了，老早就可以用。不依赖于实例的创建。
     public static double BASE_DISCOUNT;
     public static double VIP_DISCOUNT;
 
-    // >> TODO 知识点：静态代码块。在main()外写一个静态代码块，java会在class（装载该.java文件到进程）初始化的时候先跑一遍
+    // >> TODO 知识点：静态代码块。
+    // >> TODO 在main()外写一个静态代码块，java会在class（装载该.java文件到进程）初始化的时候先跑一遍
     static {
         BASE_DISCOUNT = 0.8;
         VIP_DISCOUNT = 0.75;

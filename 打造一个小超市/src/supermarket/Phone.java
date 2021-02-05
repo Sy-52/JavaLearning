@@ -96,6 +96,10 @@ public class Phone extends Merchandise{
         return this.brand + ":" + this.os + ":" + super.getMerchandiseName();
     }
 
+    public static void staticMethod(){
+        System.out.println("staticMethod in Phone.");
+    }
+
 
     //私有化成员变量，提供get、set方法
     public double getPhoneScreenSize(){return this.screenSize;}

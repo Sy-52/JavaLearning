@@ -29,6 +29,10 @@ public class ShellColorChangePhone extends Phone{
         return super.buy(count);
     }
 
+    public static void staticMethod(){
+        System.out.println("staticMethod in ShellColorChangePhone.");
+    }
+
     //私有化成员变量，提供is、set方法
     public boolean isEnableShellColorChange(){return this.enableShellColorChange;}
 
