@@ -1,5 +1,7 @@
 package supermarket;
 
+import java.util.Objects;
+
 public class Merchandise {
     // >> TODO 知识点：为什么说所有的代码都在方法里？对于成员变量，赋初值的代码在java内部会变成<init>方法。
     private String name;
@@ -196,6 +198,24 @@ public class Merchandise {
     // >> TODO 静态方法要求签名相同，返回值也要相同。很像覆盖但却不是覆盖。
     public static void staticMethod(){
         System.out.println("staticMethod in Merchandise.");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Merchandise)) return false;
+        Merchandise that = (Merchandise) o;
+        return id == that.id &&
+                count == that.count &&
+                Double.compare(that.soldPrice, soldPrice) == 0 &&
+                Double.compare(that.purchasePrice, purchasePrice) == 0 &&
+                name.equals(that.name);
+    }
+
+    // >> TODO 哈希码的生成已经有一套相对标准的过程了，程序会综合考虑传入的参数生成一个哈希码。让IDE帮我们生成即可。
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, id, count, soldPrice, purchasePrice);
     }
 
     //封装的成员变量的get、set方法

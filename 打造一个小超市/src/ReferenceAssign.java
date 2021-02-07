@@ -29,5 +29,10 @@ public class ReferenceAssign {
 
         //出错。因为m指向的是一个Phone类型的实例
         //ShellColorChangePhone ccp1 = (ShellColorChangePhone)m;
+
+        // >> TODO 知识点：for循环的另一种写法
+        System.out.println();
+        LittleSuperMarket littleSuperMarket = new LittleSuperMarket("大卖场", "世纪大道1号", 500, 0);
+        System.out.println(littleSuperMarket.getBiggestPurchasePrice());
     }
 }

@@ -68,6 +68,32 @@ public class LittleSuperMarket {
         return curr;
     }
 
+    // >> TODO 知识点：for循环的另一种写法。适用于只循环遍历。不赋值、不跳跃访问、不需要知道当前的元素是第几个的情况
+    public double getBiggestPurchasePrice(){
+        double maxPurchasePrice = -1;
+        for(Merchandise m : this.merchandise){
+            if(m.getMerchandisePurchasePrice() > maxPurchasePrice){
+                maxPurchasePrice = m.getMerchandisePurchasePrice();
+            }
+        }
+        return maxPurchasePrice;
+    }
+
+    public boolean findMerchandise(Merchandise target){
+        int i = 0;
+        for(Merchandise m : this.merchandise){
+            boolean match = m.equals(target);
+            //如果用 == 来比较的话，那么只要两个引用指向同一个实例，则返回true.
+            //boolean match = (m == target);
+            if(match){
+                System.out.println("找到了商品，位置在:" + i);
+                return true;
+            }
+            i++;
+        }
+        return false;
+    }
+
     //对封装的成员变量提供get、set方法
     public String getSuperMarketName(){return this.superMarketName;}
 
