@@ -17,14 +17,15 @@ public class TouchObject {
         System.out.println(littleSuperMarket.findMerchandise(t10));
         System.out.println(littleSuperMarket.findMerchandise(t100));
     }
+
     private static void printObj(Object obj){
         System.out.println("-----" + obj + "的详细内容-----");
         System.out.println(obj);
         //试试方法
         System.out.println(obj.toString());
-        // >> TODO java类库中有很多native方法，其方法通过方法名映射到本地代码（C/C++）实现，供其跑在对应系统上。其自身没有方法体
+        // >> TODO java类库中有很多native方法，其方法通过方法名映射到本地代码（C/C++）实现，供其跑在相应的系统上。其自身没有方法体
         System.out.println(obj.getClass());
-        // >> TODO hashCode可以翻为哈希码/散列码。
+        // >> TODO hashCode可以翻译为哈希码/散列码。
         System.out.println(obj.hashCode());
     }
 }
