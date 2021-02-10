@@ -50,28 +50,28 @@ public class RunLittleSuperMarketAppMain {
                     continue;
                 } else {
                     Merchandise m = all[index];
-                    if(m.getMerchandiseCount() <= 0){
-                        System.out.println(m.getMerchandiseName() + "已经售空了！请您重新选择！");
+                    if(m.getCount() <= 0){
+                        System.out.println(m.getName() + "已经售空了！请您重新选择！");
                         continue;
                     }else{
-                        System.out.println(m.getMerchandiseName() + "还有货源！单价为" + m.getMerchandiseSoldPrice() + ".请输入您要购买的数量:");
+                        System.out.println(m.getName() + "还有货源！单价为" + m.getSoldPrice() + ".请输入您要购买的数量:");
                         int numToBuy = scanner.nextInt();
                         if(numToBuy <= 0){
                             System.out.println("不买看看也好。欢迎您继续选购！");
                             continue;
                         }
-                        if(numToBuy > m.getMerchandiseCount()){
-                            System.out.println(m.getMerchandiseName() + "没有这么多库存！请您重新选择！");
+                        if(numToBuy > m.getCount()){
+                            System.out.println(m.getName() + "没有这么多库存！请您重新选择！");
                             continue;
                         }
-                        if(numToBuy * m.getMerchandiseSoldPrice() > customer.getCustomerMoney()){
+                        if(numToBuy * m.getSoldPrice() > customer.getCustomerMoney()){
                             System.out.println("很抱歉，您钱没带够。");
                             continue;
                         }else {
                             System.out.println("恭喜您购买成功！");
-                            totalCost += numToBuy * m.getMerchandiseSoldPrice();
+                            totalCost += numToBuy * m.getSoldPrice();
                             customer.setCustomerMoney(customer.getCustomerMoney() - totalCost);
-                            m.setMerchandiseCount(m.getMerchandiseCount() -  numToBuy);
+                            m.setCount(m.getCount() -  numToBuy);
                             // >> TODO 下面这句为什么能行？细品
                             littleSuperMarket.getMerchandiseSold()[index] += numToBuy;
                         }
@@ -95,9 +95,9 @@ public class RunLittleSuperMarketAppMain {
             Merchandise m = all[i];
             int numSold = littleSuperMarket.getMerchandiseSold()[i];
             if( numSold!= 0){
-                double incomming = m.getMerchandiseSoldPrice() * numSold;
-                double netIncomming = (m.getMerchandiseSoldPrice() - m.getMerchandisePurchasePrice()) * numSold;
-                System.out.println(m.getMerchandiseName() + "售出了" + littleSuperMarket.getMerchandiseSold()[i] + "个。"
+                double incomming = m.getSoldPrice() * numSold;
+                double netIncomming = (m.getSoldPrice() - m.getPurchasePrice()) * numSold;
+                System.out.println(m.getName() + "售出了" + littleSuperMarket.getMerchandiseSold()[i] + "个。"
                                     + "总的销售额为：" + incomming + ".净利润为：" + netIncomming);
             }
         }

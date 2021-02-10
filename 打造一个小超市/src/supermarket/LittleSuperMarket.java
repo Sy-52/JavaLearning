@@ -72,8 +72,8 @@ public class LittleSuperMarket {
     public double getBiggestPurchasePrice(){
         double maxPurchasePrice = -1;
         for(Merchandise m : this.merchandise){
-            if(m.getMerchandisePurchasePrice() > maxPurchasePrice){
-                maxPurchasePrice = m.getMerchandisePurchasePrice();
+            if(m.getPurchasePrice() > maxPurchasePrice){
+                maxPurchasePrice = m.getPurchasePrice();
             }
         }
         return maxPurchasePrice;

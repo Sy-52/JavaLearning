@@ -48,7 +48,7 @@ public class RunLittleSuperMarketAppMainV2 {
                     System.out.println("抱歉！商品库存不足!");
                     continue;
                 }else{
-                    System.out.println("您购买的" + countToBuy + "件" + m.getMerchandiseName() + "的单价为：" + m.getMerchandiseSoldPrice() + ".今天超市全场商品第二件半价优惠！总价为：" + totalCost);
+                    System.out.println("您购买的" + countToBuy + "件" + m.getName() + "的单价为：" + m.getSoldPrice() + ".今天超市全场商品第二件半价优惠！总价为：" + totalCost);
                     // >> TODO 3、方法的形参类型 -- 自己本身这种类型
                     Merchandise judgeMerchandise = all[199];
                     System.out.println("商品199目前剩余库存的总价值比用户购买商品目前剩余库存的总价值大：" + m.totalValueBiggerThan(judgeMerchandise));

@@ -9,6 +9,7 @@ public class Merchandise {
     private int count;
     private double soldPrice;
     private double purchasePrice;
+    public static String STATIC_MEMBER = "Common Merchandise";
 
     // >> TODO 知识点：构造方法
     // >> TODO 构造方法的方法名必须与类名一样，且没有返回值。（有返回值也没有意义，因为new操作符永远返回的是创建出来的对象的引用）
@@ -44,6 +45,9 @@ public class Merchandise {
                 ".商品的进价是" + purchasePrice + ".商品的净利润为" + netIncome + ".商品的库存为" + count);
     }
 
+    public static String getNameOf(Merchandise m){
+        return m.getName();
+    }
 
     // >> TODO 返回值必须要能用来给返回值类型的变量赋值
     //calculateProfit()用以返回调用此方法的对象的净利润。该方法的返回值为【基础数据类型】。
@@ -96,7 +100,7 @@ public class Merchandise {
     //totalValueBiggerThan()用于判断【调用该方法的商品的目前总价值】与【传入商品的目前总价值】的大小
     public boolean totalValueBiggerThan(Merchandise merchandise){
         //这里直接return而非用if...else，注意这个细节
-        return this.count * this.purchasePrice < merchandise.getMerchandiseCount() * merchandise.getMerchandisePurchasePrice();
+        return this.count * this.purchasePrice < merchandise.getCount() * merchandise.getPurchasePrice();
     }
 
     // >> TODO 方法的形参可以是任何类型，包括自定义类型：public 【class】 LittleSuperMarket{}
@@ -108,7 +112,7 @@ public class Merchandise {
             // >> TODO 因为有返回值的类方法，你可以把它当做一个成员变量来使用。故而可以使用上述格式。
             Merchandise m = littleSuperMarket.getMerchandise()[i];
             //下面的m.getMerchandiseCount()虽然用m.count也行，但毕竟该方法是public类型的方法，还是应该严谨。
-            double nowTotalValue = m.getMerchandiseCount() * m.calculateProfit();
+            double nowTotalValue = m.getCount() * m.calculateProfit();
             if(nowTotalValue > totalValue){
                 return false;
             }
@@ -200,42 +204,54 @@ public class Merchandise {
         System.out.println("staticMethod in Merchandise.");
     }
 
+    // >> TODO 其实用 + 做字符串拼接时，已经调用了toString()返回一个字符串拼起来
+    @Override
+    public String toString() {
+        return "Merchandise{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                ", count=" + count +
+                ", soldPrice=" + soldPrice +
+                ", purchasePrice=" + purchasePrice +
+                '}';
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Merchandise)) return false;
         Merchandise that = (Merchandise) o;
-        return id == that.id &&
-                count == that.count &&
-                Double.compare(that.soldPrice, soldPrice) == 0 &&
-                Double.compare(that.purchasePrice, purchasePrice) == 0 &&
-                name.equals(that.name);
+        return getId() == that.getId() &&
+                getCount() == that.getCount() &&
+                Double.compare(that.getSoldPrice(), getSoldPrice()) == 0 &&
+                Double.compare(that.getPurchasePrice(), getPurchasePrice()) == 0 &&
+                getName().equals(that.getName());
     }
 
     // >> TODO 哈希码的生成已经有一套相对标准的过程了，程序会综合考虑传入的参数生成一个哈希码。让IDE帮我们生成即可。
     @Override
     public int hashCode() {
-        return Objects.hash(name, id, count, soldPrice, purchasePrice);
+        return Objects.hash(getName(), getId(), getCount(), getSoldPrice(), getPurchasePrice());
     }
 
     //封装的成员变量的get、set方法
-    public String getMerchandiseName(){return this.name;}
+    public String getName(){return this.name;}
 
-    public void setMerchandiseName(String name){this.name = name;}
+    public void setName(String name){this.name = name;}
 
-    public int getMerchandiseId(){return this.id;}
+    public int getId(){return this.id;}
 
-    public void setMerchandiseId(int id){this.id = id;}
+    public void setId(int id){this.id = id;}
 
-    public int getMerchandiseCount(){return this.count;}
+    public int getCount(){return this.count;}
 
-    public void setMerchandiseCount(int count){this.count = count;}
+    public void setCount(int count){this.count = count;}
 
-    public double getMerchandiseSoldPrice(){return this.soldPrice;}
+    public double getSoldPrice(){return this.soldPrice;}
 
-    public void setMerchandiseSoldPrice(double soldPrice){this.soldPrice = soldPrice;}
+    public void setSoldPrice(double soldPrice){this.soldPrice = soldPrice;}
 
-    public double getMerchandisePurchasePrice(){return this.purchasePrice;}
+    public double getPurchasePrice(){return this.purchasePrice;}
 
-    public void setMerchandisePurchasePrice(double purchasePrice){this.purchasePrice = purchasePrice;}
+    public void setPurchasePrice(double purchasePrice){this.purchasePrice = purchasePrice;}
 }

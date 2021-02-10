@@ -12,7 +12,7 @@ public class ReferenceAssign {
 
         // >> TODO 怎么解决呢？强制类型转换即可。
         Phone ph = (Phone)m;
-        System.out.println(ph.getPhoneBrand());
+        System.out.println(ph.getBrand());
 
         // >> TODO 相反，让一个子类的引用指向一个父类的实例则不行,因为父类没有子类的属性、方法,java会报错
         //Phone ph = new Merchandise();

@@ -22,7 +22,7 @@ public class Phone extends Merchandise{
     //private final Merchandise gift;
     private Merchandise gift;
 
-    public double MAX_BUY_ONE_ORDER;
+    public double MAX_BUY_ONE_ORDER = 5;
 
 
     public Phone(
@@ -85,46 +85,63 @@ public class Phone extends Merchandise{
         return super.buy(count);
     }
 
-    // >> TODO 知识点：多态 - 同一个方法，不同的行为
-    // >> TODO 方法可以覆盖，本质上方法就是一段代码，一段逻辑。而属性只能读取，顾无法覆盖。
-    // >> TODO 为什么推荐在方法中私有化成员变量，然后提供get/set方法？因为只有方法，才能覆盖，才有多态。
-    public String getMerchandiseName(){
-        // >> TODO 知识点：super
-        // >> TODO 使用this.getMerchandiseName()会调用该方法本身，形成递归。而使用super则可以调用父类的【public的方法、属性】
-        // >> TODO super是继承技术的一部分。它的用法就像是一个父类的引用，但super并不是父类的引用。
-        //return this.brand + ":" + this.os + ":" + this.getMerchandiseName();
-        return this.brand + ":" + this.os + ":" + super.getMerchandiseName();
-    }
-
     public static void staticMethod(){
         System.out.println("staticMethod in Phone.");
     }
 
+    @Override
+    public String toString() {
+        return "Phone{" +
+                "name='" + super.getName() + '\'' +
+                ", id=" + getId() +
+                ", count=" + getCount() +
+                ", soldPrice=" + getSoldPrice() +
+                ", purchasePrice=" + getPurchasePrice() +
+                ", screenSize=" + screenSize +
+                ", cpuHZ=" + cpuHZ +
+                ", memoryG=" + memoryG +
+                ", storageG=" + storageG +
+                ", brand='" + brand + '\'' +
+                ", os='" + os + '\'' +
+                ", gift=" + gift +
+                '}';
+    }
 
     //私有化成员变量，提供get、set方法
-    public double getPhoneScreenSize(){return this.screenSize;}
+    // >> TODO 知识点：多态 - 同一个方法，不同的行为
+    // >> TODO 方法可以覆盖，本质上方法就是一段代码，一段逻辑。而属性只能读取，顾无法覆盖。
+    // >> TODO 为什么推荐在方法中私有化成员变量，然后提供get/set方法？因为只有方法，才能覆盖，才有多态。
+    public String getName(){
+        // >> TODO 知识点：super
+        // >> TODO 使用this.getName()会调用该方法本身，形成递归。而使用super则可以调用父类的【public的方法、属性】
+        // >> TODO super是继承技术的一部分。它的用法就像是一个父类的引用，但super并不是父类的引用。
+        //return this.brand + ":" + this.os + ":" + this.getName();
+        return this.brand + ":" + this.os + ":" + super.getName();
+    }
 
-    public void setPhoneScreenSize(double screenSize){this.screenSize = screenSize;}
+    public double getScreenSize(){return this.screenSize;}
 
-    public double getPhoneCpuHZ(){return this.cpuHZ;}
+    public void setScreenSize(double screenSize){this.screenSize = screenSize;}
 
-    public void setPhoneCpuHZ(double cpuHZ){this.cpuHZ = cpuHZ;}
+    public double getCpuHZ(){return this.cpuHZ;}
 
-    public int getPhoneMemoryG(){return this.memoryG;}
+    public void setCpuHZ(double cpuHZ){this.cpuHZ = cpuHZ;}
 
-    public void setPhoneMemoryG(int memoryG){this.memoryG = memoryG;}
+    public int getMemoryG(){return this.memoryG;}
 
-    public int getPhoneStorageG(){return this.storageG;}
+    public void setMemoryG(int memoryG){this.memoryG = memoryG;}
 
-    public void setPhoneStorageG(double cpuHZ){this.storageG = storageG;}
+    public int getStorageG(){return this.storageG;}
 
-    public String getPhoneBrand(){return this.brand;}
+    public void setStorageG(double cpuHZ){this.storageG = storageG;}
 
-    public void setPhoneBrand(String brand){this.brand = brand;}
+    public String getBrand(){return this.brand;}
 
-    public String getPhoneOs(){return this.os;}
+    public void setBrand(String brand){this.brand = brand;}
 
-    public void setPhoneOs(String os){this.os = os;}
+    public String getOs(){return this.os;}
+
+    public void setOs(String os){this.os = os;}
 
     public Merchandise getGift(){return this.gift;}
 

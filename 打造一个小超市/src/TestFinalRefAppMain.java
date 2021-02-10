@@ -10,8 +10,8 @@ public class TestFinalRefAppMain {
 
         Merchandise gift = ph.getGift();
         gift.describe();
-        gift.setMerchandiseName("礼物改名了！");
-        gift.setMerchandiseCount(99);
+        gift.setName("礼物改名了！");
+        gift.setCount(99);
         gift.describe();
         System.out.println();
         // >> TODO 在LittleSuperMarket初始化的时候，无论有壳还是无壳手机，其成员变量gift均指向引用giftForPhone指向的实例对象.

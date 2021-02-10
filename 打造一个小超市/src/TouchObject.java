@@ -14,6 +14,7 @@ public class TouchObject {
         Merchandise t100 = new Merchandise("手机" + 100, 100, 200,1999, 999);
 
         System.out.println(littleSuperMarket.findMerchandise(t0));
+        // >> TODO 为什么t10、t100和第10个、第100个商品不一样，因为Phone类中重写了getName()方法，导致equals()返回false
         System.out.println(littleSuperMarket.findMerchandise(t10));
         System.out.println(littleSuperMarket.findMerchandise(t100));
     }
