@@ -31,7 +31,7 @@ public class Merchandise {
     }
 
     public Merchandise(){
-        this("无名", 0, 0, 1.1, 1);
+        this("空", 0, 0, 0, 0);
     }
 
     // >> TODO 方法名：任意合法的标识符
@@ -103,7 +103,7 @@ public class Merchandise {
         return this.count * this.purchasePrice < merchandise.getCount() * merchandise.getPurchasePrice();
     }
 
-    // >> TODO 方法的形参可以是任何类型，包括自定义类型：public 【class】 LittleSuperMarket{}
+    // >> TODO 方法的形参可以是任何类型，包括自定义类型LittleSuperMarket
     //isTheBiggestTotalValueOne()用于判断【调用该方法的商品的总利润】是否是【超市中所有商品】中最大的
     public boolean isTheBiggestTotalValueOne(LittleSuperMarket littleSuperMarket){
         double totalValue = this.count * this.calculateProfit();
@@ -193,13 +193,12 @@ public class Merchandise {
     // >> TODO 下面的DISCOUNT_FOR_VIP为所有包中的所有类公用。
     public static double DISCOUNT_FOR_VIP = 0.9;
 
-    // >> TODO 知识点：静态方法。静态方法没有this自引用，故不能【直接】访问成员变量；
-    // >> TODO 但是你可以在静态方法中自己创建对象/通过传入对象的引用，从而访问成员变量
+    // >> TODO 知识点：静态方法
+    // >> TODO 静态方法没有this自引用，故不能【直接】访问成员变量.但是你可以在静态方法中自己创建对象/通过传入对象的引用，从而访问成员变量
     public static double getDiscountOnDiscount(){
         return DISCOUNT_FOR_VIP;
     }
 
-    // >> TODO 静态方法要求签名相同，返回值也要相同。很像覆盖但却不是覆盖。
     public static void staticMethod(){
         System.out.println("staticMethod in Merchandise.");
     }

@@ -4,7 +4,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-public class ClassAndReflectionAppMain {
+public class ClassAndReflectionMain {
     // >> TODO 变长参数定义方法：String... args.
     // >> TODO 变长参数必须位于方法的参数列表的最后一个。可以不传入具体实参，只要不传实参，就等价于new String[0].
     public static void dyncArgs(int a, String... args){

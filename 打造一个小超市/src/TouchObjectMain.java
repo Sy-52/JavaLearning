@@ -1,6 +1,6 @@
 import supermarket.*;
 
-public class TouchObject {
+public class TouchObjectMain {
     public static void main(String[] args) {
         // >> TODO Object是java对"对象"的一个最基本的抽象。getClass()让其知道自己是什么类；hashCode()可以相对唯一的标识一个对象
         Object obj = new Object();

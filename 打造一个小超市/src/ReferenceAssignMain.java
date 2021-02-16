@@ -1,6 +1,6 @@
 import supermarket.*;
 
-public class ReferenceAssign {
+public class ReferenceAssignMain {
     public static void main(String[] args) {
         // >> TODO 可以让一个父类的引用指向一个子类的实例，因为父类能做的子类都能做。但是只能像操作父类实例一样操作子类实例。
         Merchandise m = new Phone(

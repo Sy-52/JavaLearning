@@ -1,9 +1,9 @@
 import supermarket.*;
 
-public class StaticMethodDoesNotBelieveOverride {
+public class StaticMethodDoesNotBelieveOverrideMain {
     public static void main(String[] args) {
         LittleSuperMarket littleSuperMarket = new LittleSuperMarket("大卖场", "世纪大道1号", 500, 0);
-        // >> TODO getMerchandise()[10]指向的是一个Phone类的实例，为什么还要转类型？
+        // >> TODO 思考：getMerchandise()[10]指向的是一个Phone类的实例，为什么还要转类型？
         // >> TODO 因为getMerchandise()返回的是一个Merchandise类型的数组，引用是Merchandise类型的。
         Merchandise m = littleSuperMarket.getMerchandise()[100];
         Phone ph = (Phone)m;

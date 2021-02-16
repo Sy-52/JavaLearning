@@ -8,7 +8,8 @@ public class RunLittleSuperMarketAppMain {
 
         // >> TODO 知识点：使用littleSuperMarket类的构造方法，并用构造方法来初始化，能比最开始全部代码写在这里极大的简化main()中的逻辑
         LittleSuperMarket littleSuperMarket = new LittleSuperMarket("百伦广场","DJY大道211号",200,0.0);
-
+        
+        //将littleSuperMarket.merchandise这个引用赋给all，避免该长串字符的重复
         Merchandise[] all = littleSuperMarket.getMerchandise();
 
         System.out.println("超市开门啦！");

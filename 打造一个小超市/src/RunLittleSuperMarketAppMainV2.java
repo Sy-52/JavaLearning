@@ -4,10 +4,8 @@ import java.util.Scanner;
 
 public class RunLittleSuperMarketAppMainV2 {
     public static void main(String[] args) {
-        // >> TODO 知识点：创建一个构造方法。简化main()中的逻辑
-        LittleSuperMarket littleSuperMarket = new LittleSuperMarket("百伦广场","DJY大道211号",200,0.0);
 
-        //将littleSuperMarket.merchandise这个引用赋给all，避免该长串字符的重复
+        LittleSuperMarket littleSuperMarket = new LittleSuperMarket("百伦广场","DJY大道211号",200,0.0);
         Merchandise[] all = littleSuperMarket.getMerchandise();
 
         System.out.println("超市开门啦！");
@@ -23,7 +21,7 @@ public class RunLittleSuperMarketAppMainV2 {
         littleSuperMarket.getBiggestProfitMerchandise().describe();
         System.out.println();
 
-        // >> TODO 知识点：方法的参数
+        // >> TODO 知识点：方法 -- 参数
         Scanner scanner = new Scanner(System.in);
         while(true) {
             System.out.println("今天本超市全场半价优惠！本超市提供" + all.length + "种商品。请选择您要购买的商品编号：(退出购买请输入-1)");

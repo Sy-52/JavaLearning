@@ -1,6 +1,6 @@
 import supermarket.*;
 
-public class ToStringAppMain {
+public class ToStringMain {
     public static void main(String[] args) {
         LittleSuperMarket littleSuperMarket = new LittleSuperMarket("大卖场","世纪大道1号",500,0);
 

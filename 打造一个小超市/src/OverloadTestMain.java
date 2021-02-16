@@ -1,7 +1,7 @@
 import supermarket.LittleSuperMarket;
 import supermarket.*;
 
-public class OverloadTestAppMain {
+public class OverloadTestMain {
     public static void main(String[] args) {
         LittleSuperMarket littleSuperMarket = new LittleSuperMarket(
                 "胥家菜市", "石龙下街17号", 50, 0.0

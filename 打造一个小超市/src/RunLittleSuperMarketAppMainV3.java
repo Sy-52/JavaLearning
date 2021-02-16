@@ -6,9 +6,7 @@ import static supermarket.Merchandise.getDiscountOnDiscount;
 
 public class RunLittleSuperMarketAppMainV3 {
     public static void main(String[] args) {
-        // >> TODO 知识点：创建一个构造方法。简化main()中的逻辑
         LittleSuperMarket littleSuperMarket = new LittleSuperMarket("百伦广场","DJY大道211号",200,0.0);
-        //将littleSuperMarket.merchandise这个引用赋给all，避免该长串字符的重复
         Merchandise[] all = littleSuperMarket.getMerchandise();
 
         System.out.println("LittleSuperMarket类的对象是：" + littleSuperMarket);
@@ -31,12 +29,12 @@ public class RunLittleSuperMarketAppMainV3 {
         //这里有一个点。下面的cost为-2，costVip为17990.为何？思考
         double cost = m.buy(10);
         System.out.println();
-        //下面这个方法我没有在Phone类中写override的方法，故而调用的是Merchandise类中的方法，竟然购买成功了。
+        //下面这个方法我没有在Phone类中写override的方法，故而会去调用Merchandise类中的方法，导致购买成功。
         double costVip = m.buy(10,true);
         System.out.println();
 
         // >> TODO 知识点：多态。
-        // >> TODO 下面三句，describe()分别调用的是哪个类中的describe()？
+        // >> TODO 下面三个describe()分别调用的是哪个类中的describe()？
         all[1].describe();
         all[10].describe();
         all[100].describe();
@@ -48,7 +46,7 @@ public class RunLittleSuperMarketAppMainV3 {
     }
 
     // >> TODO 知识点：静态变量。
-    // >> TODO 静态变量被java放在<clinit>方法中，老早就初始化好了，老早就可以用。不依赖于实例的创建。
+    // >> TODO 静态变量被java放在<clinit>方法中，老早就初始化好可以用了。不依赖于实例的创建。
     public static double BASE_DISCOUNT;
     public static double VIP_DISCOUNT;
 

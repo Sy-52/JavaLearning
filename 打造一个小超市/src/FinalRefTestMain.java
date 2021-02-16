@@ -1,6 +1,6 @@
 import supermarket.*;
 
-public class TestFinalRefAppMain {
+public class FinalRefTestMain {
     public static void main(String[] args) {
         LittleSuperMarket littleSuperMarket = new LittleSuperMarket("大卖场", "世纪大道1号", 500, 0);
         // >> TODO getMerchandise()[10]指向的是一个Phone类的实例，为什么还要转类型？

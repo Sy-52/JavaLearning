@@ -12,15 +12,15 @@ public class Customer {
     }
 
     //封装的成员变量的get、set方法
-    public String getCustomerName(){return this.name;}
+    public String getName(){return this.name;}
 
-    public void setCustomerName(String name){this.name = name;}
+    public void setName(String name){this.name = name;}
 
-    public double getCustomerMoney(){return this.money;}
+    public double getMoney(){return this.money;}
 
-    public void setCustomerMoney(double money){this.money = money;}
+    public void setMoney(double money){this.money = money;}
 
-    public boolean getCustomerIsDrivingCar(){return this.isDrivingCar;}
+    public boolean getIsDrivingCar(){return this.isDrivingCar;}
 
-    public void setCustomerIsDrivingCar(boolean isDrivingCar){this.isDrivingCar = isDrivingCar;}
+    public void setIsDrivingCar(boolean isDrivingCar){this.isDrivingCar = isDrivingCar;}
 }
