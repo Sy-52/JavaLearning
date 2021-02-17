@@ -26,16 +26,16 @@ public class RunLittleSuperMarketAppMain {
             //开始营业
             Customer customer = new Customer();
 
-            if(customer.getCustomerIsDrivingCar()){
+            if(customer.getIsDrivingCar()){
                 if(littleSuperMarket.getParkingCount() <= 0){
                     System.out.println("非常抱歉！本店停车位已停满！期待您的下次光临！");
                     continue;
                 }else{
-                    System.out.println("欢迎顾客" + customer.getCustomerName() + "光临本超市！本超市停车位为免费使用！祝您购物愉快！");
+                    System.out.println("欢迎顾客" + customer.getName() + "光临本超市！本超市停车位为免费使用！祝您购物愉快！");
                     littleSuperMarket.setParkingCount(littleSuperMarket.getParkingCount() - 1);
                 }
             }else{
-                System.out.println("欢迎顾客" + customer.getCustomerName() + "光临本超市！祝您购物愉快！");
+                System.out.println("欢迎顾客" + customer.getName() + "光临本超市！祝您购物愉快！");
             }
 
             //顾客开始购物
@@ -65,13 +65,13 @@ public class RunLittleSuperMarketAppMain {
                             System.out.println(m.getName() + "没有这么多库存！请您重新选择！");
                             continue;
                         }
-                        if(numToBuy * m.getSoldPrice() > customer.getCustomerMoney()){
+                        if(numToBuy * m.getSoldPrice() > customer.getMoney()){
                             System.out.println("很抱歉，您钱没带够。");
                             continue;
                         }else {
                             System.out.println("恭喜您购买成功！");
                             totalCost += numToBuy * m.getSoldPrice();
-                            customer.setCustomerMoney(customer.getCustomerMoney() - totalCost);
+                            customer.setMoney(customer.getMoney() - totalCost);
                             m.setCount(m.getCount() -  numToBuy);
                             // >> TODO 下面这句为什么能行？细品
                             littleSuperMarket.getMerchandiseSold()[index] += numToBuy;
@@ -80,10 +80,10 @@ public class RunLittleSuperMarketAppMain {
                 }
             }
             //顾客完成购买后,离开
-            if(customer.getCustomerIsDrivingCar()){
+            if(customer.getIsDrivingCar()){
                 littleSuperMarket.setParkingCount(littleSuperMarket.getParkingCount() + 1);
             }
-            System.out.println(customer.getCustomerName() + "共消费了" + totalCost + "元。");
+            System.out.println(customer.getName() + "共消费了" + totalCost + "元。");
             littleSuperMarket.setIncomingSum(littleSuperMarket.getIncomingSum() + totalCost);
             System.out.println("超市还继续营业吗？");
             open = scanner.nextBoolean();

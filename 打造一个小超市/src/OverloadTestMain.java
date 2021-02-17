@@ -19,7 +19,7 @@ public class OverloadTestMain {
         merchandiseTest.testMerchandiseOverload("");
         System.out.println();
 
-        // >> TODO 可以看到，引用就算让其指向null也无妨。java在编译期就会根据实参的类型知道该调用哪个"确定的"方法，这叫静态多态。
+        // >> TODO 可以看到，引用就算指向null也无妨。java在编译期就会根据实参的类型知道该调用哪个"确定的"方法，这叫静态多态。
         m = null;
         merchandiseTest.testMerchandiseOverload(m);
         merchandiseTest.testMerchandiseOverload((Phone)m);

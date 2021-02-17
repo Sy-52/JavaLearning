@@ -39,13 +39,13 @@ public class Phone extends Merchandise{
     }
 
     public Phone(
-            String name, int Id, int count, double soldPrice, double purchasePrice, double screenSize,
+            String name, int Id, int count, double soldPrice, double purchasePrice, Category category, double screenSize,
             double cpuHZ, int memoryG, int storageG, String brand, String os, Merchandise gift){
         //子类并不能【直接】访问父类的【private的属性和方法】，如下。
         //可以认为，创建子类对象的同时，也创建了一个隐藏的父类对象。所以我们才能setName()，对name属性进行操作，如下
         //this.setName(name);this.setId(Id);this.setCount(count);this.setSoldPrice(soldPrice);this.setPurchasePrice(purchasePrice);
         // >> TODO 直接使用super调用父类的构造方法。和上述注释的语句是等价的。
-        super(name, Id, count, soldPrice, purchasePrice);
+        super(name, Id, count, soldPrice, purchasePrice,category);
 
         //将初始化的代码封装在一个init()中，在构造方法中调用。
         this.screenSize = screenSize;

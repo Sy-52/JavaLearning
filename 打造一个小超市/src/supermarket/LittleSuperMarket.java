@@ -1,5 +1,7 @@
 package supermarket;
 
+import static supermarket.Category.*;
+
 public class LittleSuperMarket {
     //私有化LittleSuperMarket类的所有成员变量
     private String superMarketName;
@@ -19,7 +21,7 @@ public class LittleSuperMarket {
         this.merchandise = new Merchandise[200];
         this.merchandiseSold = new int[this.merchandise.length];
 
-        Merchandise giftForPhone = new Merchandise("手机赠品-64g内存卡", 2, 999, 60, 30);;
+        Merchandise giftForPhone = new Merchandise("手机赠品-64g内存卡", 2, 999, 60, 30,ELECTRIC);;
 
         //初始化200件商品，并对每10件、每100件商品做特殊赋值
         for(int i = 0; i < this.merchandise.length; i++){
@@ -33,16 +35,16 @@ public class LittleSuperMarket {
             if(i > 0 && i % 100 == 0){
                 //giftForPhone = new Merchandise("手机赠品-128g内存卡", 1, 999, 120, 60);
                 this.merchandise[i] = new ShellColorChangePhone(
-                        "手机" + i, i, 200, 1999, 999, 4.5, 3.5,
+                        "手机" + i, i, 200, 1999, 999, ELECTRIC,4.5, 3.5,
                         4, 128, "三星change", "Android", giftForPhone,false
                 );
             }else if(i > 0 && i % 10 == 0){
                 this.merchandise[i] = new Phone(
-                        "手机" + i, i, 200, 1999, 999, 4.5, 3.5,
+                        "手机" + i, i, 200, 1999, 999,  ELECTRIC,4.5, 3.5,
                         4, 128, "索尼normal", "Android",giftForPhone
                 );
             }else {
-                this.merchandise[i] = new Merchandise("商品" + i, i, 200, (1 + Math.random()) * 200, Math.random() * 200);
+                this.merchandise[i] = new Merchandise("商品" + i, i, 200, (1 + Math.random()) * 200, Math.random() * 200, FOOD);
             }
         }
     }
@@ -68,7 +70,7 @@ public class LittleSuperMarket {
         return curr;
     }
 
-    // >> TODO 知识点：for循环的另一种写法。适用于只循环遍历。不赋值、不跳跃访问、不需要知道当前的元素是第几个的情况
+    // >> TODO for循环的另一种写法：适用于只循环遍历。不赋值、不跳跃访问、不需要知道当前的元素是第几个的情况
     public double getBiggestPurchasePrice(){
         double maxPurchasePrice = -1;
         for(Merchandise m : this.merchandise){

@@ -20,9 +20,9 @@ public class ClassAndReflectionMain {
         Merchandise m100 = littleSuperMarket.getMerchandise()[100];
 
         // >> TODO Class类是描述类的类。通过Class类的实例基本能看到类中除了方法的逻辑代码外的所有信息。
-        // >> TODO 除了通过【引用.getClass()】来获取实例外，还可以通过【类名.class】来获取实例。
-        //Class clazz = m100.getClass();
-        Class clazz = ShellColorChangePhone.class;
+        // >> TODO 除了通过【引用.getClass()】来获取Class类的实例外，还可以通过【类名.class】来获取实例。
+        Class clazz = m100.getClass();
+        //Class clazz = ShellColorChangePhone.class;
 
         System.out.println(clazz.getName());
         System.out.println(clazz.getSimpleName());
@@ -30,10 +30,10 @@ public class ClassAndReflectionMain {
 
         // >> TODO 知识点：反射（反射在寻找对应的属性、方法时慢，但在执行时时间是一样的）
         // >> TODO 使用getField()来得到类中为public的成员变量的"定义"
-        // >> TODO 使用getDeclaredField()来得到类中所有声明的成员变量的"定义"，然后强制用代码设为可以访问。（反射特有）
+        // >> TODO 使用getDeclaredField()来得到类中所有声明过的成员变量的"定义"，然后强制用代码设为可以访问。（反射特有）
         Field field = clazz.getDeclaredField("enableShellColorChange");
         field.setAccessible(true);
-        // >> TODO 用反射访问属性时，countField必须是传进来的这个实例的父类/本身这个类所获取的Field.
+        // >> TODO 用反射访问属性时，field必须是传进来的这个实例的父类/本身这个类所获取的Field.
         System.out.println(field.get(m100));
         field.set(m100, true);
         System.out.println(field.get(m100));

@@ -4,10 +4,10 @@ public class ShellColorChangePhone extends Phone{
     private boolean enableShellColorChange;
 
     public ShellColorChangePhone(
-            String name, int Id, int count, double soldPrice, double purchasePrice, double screenSize,
+            String name, int Id, int count, double soldPrice, double purchasePrice, Category category, double screenSize,
             double cpuHZ, int memoryG, int storageG, String brand,String os, Merchandise gift,boolean enableShellColorChange
     ){
-        super(name, Id, count, soldPrice, purchasePrice, screenSize, cpuHZ, memoryG, storageG, brand, os, gift);
+        super(name, Id, count, soldPrice, purchasePrice, category, screenSize, cpuHZ, memoryG, storageG, brand, os, gift);
         init(enableShellColorChange);
     }
 

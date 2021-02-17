@@ -1,5 +1,7 @@
 package supermarket;
 
+import static supermarket.Category.FOOD;
+
 import java.util.Objects;
 
 public class Merchandise {
@@ -10,28 +12,30 @@ public class Merchandise {
     private double soldPrice;
     private double purchasePrice;
     public static String STATIC_MEMBER = "Common Merchandise";
+    private Category category;
 
     // >> TODO 知识点：构造方法
     // >> TODO 构造方法的方法名必须与类名一样，且没有返回值。（有返回值也没有意义，因为new操作符永远返回的是创建出来的对象的引用）
     // >> TODO 若没有显示的添加一个构造方法，java的每个类都会自带一个无参数的构造方法，所以我们一直都在使用构造方法。
     // >> TODO 若我们自己添加了类构造方法，java就不会再添加无参数的构造方法了，即：我们不能直接new一个对象而不传递参数了
-    public Merchandise(String name, int id, int count, double soldPrice, double purchasePrice){
+    public Merchandise(String name, int id, int count, double soldPrice, double purchasePrice, Category category){
         this.name = name;
         this.id = id;
         this.count = count;
         this.soldPrice = soldPrice;
         this.purchasePrice = purchasePrice;
+        this.category = category;
     }
 
     // >> TODO 知识点：构造方法的重载
     // >> TODO 在构造方法里才能在【第一行】调用重载的构造方法。语法为this(实参列表);
     // >> TODO 构造方法里不能自己调用自己形成死循环，也不可以使用成员变量。因为从语意上讲，这个对象还没有被初始化完成，处于中间状态。
-    public Merchandise(String name, int id, int count, double soldPrice){
-        this(name, id, count, soldPrice,soldPrice * 0.8);
+    public Merchandise(String name, int id, int count, double soldPrice, Category category){
+        this(name, id, count, soldPrice,soldPrice * 0.8,category);
     }
 
     public Merchandise(){
-        this("空", 0, 0, 0, 0);
+        this("空", 0, 0, 0, 0, FOOD);
     }
 
     // >> TODO 方法名：任意合法的标识符
@@ -41,8 +45,8 @@ public class Merchandise {
         //netIncome为方法中定义的局部变量。describe()中可使用类的成员变量，也可使用自定义的局部变量
         //如果我没有在该方法中定义double soldPrice这种重名的局部变量，那么下面的soldPrive，java会默认其为this.soldPrice
         double netIncome = soldPrice - purchasePrice;
-        System.out.println("商品的名字叫做：" + name + ".id是" + id + ".商品的售价是" + soldPrice +
-                ".商品的进价是" + purchasePrice + ".商品的净利润为" + netIncome + ".商品的库存为" + count);
+        System.out.println("商品的类别是" + category.name() +  " ; 商品的名字叫做" + name + " ; id是" + id + " ; 商品的售价是" + soldPrice +
+                " ; 商品的进价是" + purchasePrice + " ; 商品的净利润为" + netIncome + " ; 商品的库存为" + count);
     }
 
     public static String getNameOf(Merchandise m){
@@ -140,7 +144,10 @@ public class Merchandise {
         }
     }
 
-    public double buy(int count){return buy(count,false);}
+    public double buy(int count){
+        System.out.println("Merchandise类中的buy(int count)被调用了");
+        return buy(count,false);
+    }
 
     // >> TODO 重载的方法可以调用别的重载方法，也可以调用其他别的不重载的方法
     public double buy(){return buy(1);}
