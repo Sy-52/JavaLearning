@@ -2,7 +2,10 @@ package supermarket;
 
 import java.util.Date;
 
-// >> TODO 可以让接口的引用指向一个实现了接口的实例，从而调用接口定义的方法
+// >> TODO implements了有缺省方法的接口后，面对每个缺省的方法，一个类有三个选择：
+// >> TODO 1）默默继承
+// >> TODO 2）覆盖，重新实现
+// >> TODO 3）如果是抽象类，可以重新声明此方法为abstract，使该抽象类的子类无法跳过此abstract的方法来继承接口中的缺省方法。
 public class GamePointCard extends Merchandise implements ExpireDateMerchandise, VirtualMerchandise{
 
     private Date productDate;
@@ -14,22 +17,9 @@ public class GamePointCard extends Merchandise implements ExpireDateMerchandise,
         this.expirationDate = expirationDate;
     }
 
-    public boolean notExpireInDays(int days) { return daysBeforeExpire() > days; }
+    public Date getProductDate(){return this.productDate;}
 
-    public Date getProductDate() { return productDate; }
-
-    public Date getExpireDate() { return expirationDate; }
-
-    public double leftDatePercentage() {
-        return (1.0 * daysBeforeExpire())/(expirationDate.getTime() - productDate.getTime());
-    }
+    public Date getExpireDate(){return this.expirationDate;}
 
     public double actualValueNow(double leftDatePercentage) { return getSoldPrice(); }
-
-    public long daysBeforeExpire(){
-        long expireMS = expirationDate.getTime();
-        long left = expireMS - System.currentTimeMillis();
-        if(left < 0){return -1;}
-        return left/(24 * 3600 * 1000);
-    }
 }

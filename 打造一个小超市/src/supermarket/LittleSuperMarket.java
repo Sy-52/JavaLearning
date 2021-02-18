@@ -1,5 +1,7 @@
 package supermarket;
 
+import java.util.Date;
+
 import static supermarket.Category.*;
 
 public class LittleSuperMarket {
@@ -21,6 +23,8 @@ public class LittleSuperMarket {
         this.merchandise = new Merchandise[200];
         this.merchandiseSold = new int[this.merchandise.length];
 
+        Date productDate = new Date();
+        Date expireDate = new Date(productDate.getTime() + 365L * 24 * 3600 * 1000);
         Merchandise giftForPhone = new Merchandise("手机赠品-64g内存卡", 2, 999, 60, 30,ELECTRIC);;
 
         //初始化200件商品，并对每10件、每100件商品做特殊赋值
@@ -35,12 +39,12 @@ public class LittleSuperMarket {
             if(i > 0 && i % 100 == 0){
                 //giftForPhone = new Merchandise("手机赠品-128g内存卡", 1, 999, 120, 60);
                 this.merchandise[i] = new ShellColorChangePhone(
-                        "手机" + i, i, 200, 1999, 999, ELECTRIC,4.5, 3.5,
+                        "手机" + i, i, 200, 1999, 999, ELECTRIC, productDate, expireDate,4.5, 3.5,
                         4, 128, "三星change", "Android", giftForPhone,false
                 );
             }else if(i > 0 && i % 10 == 0){
                 this.merchandise[i] = new Phone(
-                        "手机" + i, i, 200, 1999, 999,  ELECTRIC,4.5, 3.5,
+                        "手机" + i, i, 200, 1999, 999,  ELECTRIC,productDate, expireDate,4.5, 3.5,
                         4, 128, "索尼normal", "Android",giftForPhone
                 );
             }else {

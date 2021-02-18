@@ -1,12 +1,18 @@
 import supermarket.*;
 
+import java.util.Date;
+
 import static supermarket.Category.*;
 
 public class ReferenceAssignMain {
     public static void main(String[] args) {
+
+        Date productDate = new Date();
+        Date expireDate = new Date(productDate.getTime() + 365L * 24 * 3600 * 1000);
+
         // >> TODO 可以让一个父类的引用指向一个子类的实例，因为父类能做的子类都能做。但是只能像操作父类实例一样操作子类实例。
         Merchandise m = new Phone(
-                "手机001", 2, 100,1999, 999, ELECTRIC,
+                "手机001", 2, 100,1999, 999, ELECTRIC,productDate, expireDate,
                 4.5, 3.5, 4, 128, "华为", "安卓", null
         );
 
@@ -20,7 +26,7 @@ public class ReferenceAssignMain {
         //Phone ph = new Merchandise();
 
         ShellColorChangePhone shellColorChangePhone = new ShellColorChangePhone(
-                "手机002", 2, 100,1999, 999, ELECTRIC,
+                "手机002", 2, 100,1999, 999, ELECTRIC,productDate, expireDate,
                 4.5, 3.5, 4, 128, "索尼", "安卓", null, false
         );
 

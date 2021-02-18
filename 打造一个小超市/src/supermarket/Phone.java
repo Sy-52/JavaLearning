@@ -7,7 +7,9 @@ package supermarket;
 // >>      TODO 2、如果你在用户输入做限制，那以为着每个买的地方你都要复制代码...并且如果突然又改成限制买10个，所有地方都要修改。
 // >> TODO 所以，继承不是组合，并不是仅仅为了拿父类的属性和方法。与组合相比，继承更像是和父类"融合"，子类父类间互相影响。
 
-public class Phone extends Merchandise{
+import java.util.Date;
+
+public class Phone extends AbstractExpireDateMerchandise{
     // >> TODO 知识点：继承
     // >> TODO 为什么要用继承？试想，如果把Merchandise类的成员变量复制到下面，如果Merchandise类以后增删了属性，那么还要到Phone这个子类来修改。
     // >> TODO 所以，直接用子类去继承父类【所有的属性、方法】。
@@ -28,7 +30,6 @@ public class Phone extends Merchandise{
         //如果在main()中调用的是该无参的构造方法，java会默认隐式的调用super(),即父类中【程序员自己"显式"定义】的无参的构造方法，父类中没有"显式"定义则会出错。
         //若在父类中，程序员自己没有"显式"定义无参的构造方法，则在该子类的无参的构造方法中必须用super(参数1,参数2...)调用父类中写的重载的构造方法。
         super();
-        //init( 4.5,4.6, 6, 128, "Unknow", "Unknow",null);
         this.screenSize = 4.5;
         this.cpuHZ = 4.6;
         this.memoryG = 6;
@@ -39,14 +40,13 @@ public class Phone extends Merchandise{
     }
 
     public Phone(
-            String name, int Id, int count, double soldPrice, double purchasePrice, Category category, double screenSize,
+            String name, int Id, int count, double soldPrice, double purchasePrice, Category category, Date productDate, Date expirationDate, double screenSize,
             double cpuHZ, int memoryG, int storageG, String brand, String os, Merchandise gift){
         //子类并不能【直接】访问父类的【private的属性和方法】，如下。
         //可以认为，创建子类对象的同时，也创建了一个隐藏的父类对象。所以我们才能setName()，对name属性进行操作，如下
         //this.setName(name);this.setId(Id);this.setCount(count);this.setSoldPrice(soldPrice);this.setPurchasePrice(purchasePrice);
         // >> TODO 直接使用super调用父类的构造方法。和上述注释的语句是等价的。
-        super(name, Id, count, soldPrice, purchasePrice,category);
-
+        super(name, Id, count, soldPrice, purchasePrice,category, productDate, expirationDate);
         //将初始化的代码封装在一个init()中，在构造方法中调用。
         this.screenSize = screenSize;
         this.cpuHZ = cpuHZ;
@@ -55,10 +55,6 @@ public class Phone extends Merchandise{
         this.brand = brand;
         this.os = os;
         this.gift = gift;
-    }
-
-    public void init(double screenSize, double cpuHZ, int memoryG, int storageG, String brand,String os,Merchandise gift){
-
     }
 
     public void describe(){
@@ -117,6 +113,8 @@ public class Phone extends Merchandise{
         //return this.brand + ":" + this.os + ":" + this.getName();
         return this.brand + ":" + this.os + ":" + super.getName();
     }
+
+    public double actualValueNow(double leftDatePercentage){return getSoldPrice() * (leftDatePercentage + 0.5);};
 
     public double getScreenSize(){return this.screenSize;}
 
