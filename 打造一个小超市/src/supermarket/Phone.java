@@ -15,7 +15,7 @@ public class Phone extends AbstractExpireDateMerchandise{
     // >> TODO 所以，直接用子类去继承父类【所有的属性、方法】。
 
     private double screenSize;
-    private double cpuHZ;
+    private CPU cpu;
     private int memoryG;
     private int storageG;
     private String brand;
@@ -24,14 +24,50 @@ public class Phone extends AbstractExpireDateMerchandise{
     //private final Merchandise gift;
     private Merchandise gift;
 
-    public double MAX_BUY_ONE_ORDER = 5;
+    // >> TODO 知识点：静态内部类（在类中使用static修饰的类，在继承、实现接口方面和普通类相同）
+    // >> TODO 静态内部类和静态变量、静态方法一样，都是类的内部的静态组成部分之一。
+    // >> TODO 静态内部类常用来实现单例模式。（利用java的类加载机制，在你用的时候再初始化静态实例，避免浪费）
+    public static class CPU{
+        private double speed;
+        private String producer;
+
+        public CPU(double speed, String producer){
+            this.speed = speed;
+            this.producer = producer;
+        }
+        // >> TODO 静态内部类中可以访问外部private的成员变量
+        public double getSpeed(){
+            //下面代码没有实际意义，仅演示可访问外部private的成员变量
+            Phone phone = null;
+            phone.memoryG = 256;
+            return speed;
+        }
+        public void setSpeed(double speed){ this.speed = speed; }
+        public String getProducer(){return producer;}
+        public void setProducer(String producer){this.producer = producer;}
+
+        @Override
+        public String toString() {
+            return "CPU{" +
+                    "speed=" + speed +
+                    ", producer='" + producer + '\'' +
+                    '}';
+        }
+
+        //静态内部类中甚至可以再定义静态内部类....
+    }
+
+    // >> TODO 外部也可以访问静态内部类中private的成员变量
+    public void accessStaticClass(){
+        this.cpu.producer = "";
+    }
 
     public Phone(){
         //如果在main()中调用的是该无参的构造方法，java会默认隐式的调用super(),即父类中【程序员自己"显式"定义】的无参的构造方法，父类中没有"显式"定义则会出错。
         //若在父类中，程序员自己没有"显式"定义无参的构造方法，则在该子类的无参的构造方法中必须用super(参数1,参数2...)调用父类中写的重载的构造方法。
         super();
         this.screenSize = 4.5;
-        this.cpuHZ = 4.6;
+        this.cpu = new CPU(5.5, "AMD");
         this.memoryG = 6;
         this.storageG = 128;
         this.brand = "Unknow";
@@ -49,7 +85,7 @@ public class Phone extends AbstractExpireDateMerchandise{
         super(name, Id, count, soldPrice, purchasePrice,category, productDate, expirationDate);
         //将初始化的代码封装在一个init()中，在构造方法中调用。
         this.screenSize = screenSize;
-        this.cpuHZ = cpuHZ;
+        this.cpu = new CPU(cpuHZ, "骁龙865");
         this.memoryG = memoryG;
         this.storageG = storageG;
         this.brand = brand;
@@ -60,13 +96,12 @@ public class Phone extends AbstractExpireDateMerchandise{
     public void describe(){
         System.out.println("此商品的属性如下：");
         super.describe();
-        System.out.println("手机厂商：" + this.brand + ";手机系统为:" + this.os + ";硬件配置如下:");
-        System.out.println("屏幕:" + this.screenSize);
-        System.out.println("CPU主频:" + this.screenSize + "GHZ");
-        System.out.println("内存:" + this.storageG + "Gb");
-        System.out.println("礼物:" + this.gift);
+        System.out.println("手机厂商：" + this.brand + " ; 手机系统为:" + this.os +
+                " ; 屏幕:" + this.screenSize + "寸 ; CPU信息:" + this.cpu  +
+                " ; 内存:" + this.storageG + "Gb" + " ; 礼物:" + this.gift);
     }
 
+    public double MAX_BUY_ONE_ORDER = 5;
     // >> TODO 知识点：覆盖(override)。覆盖才是继承的精髓。
     // >> TODO 子类使用和父类【方法签名一样、返回值也一样】的方法，可以让子类override掉父类的方法
     public double buy(int count){
@@ -93,7 +128,7 @@ public class Phone extends AbstractExpireDateMerchandise{
                 ", soldPrice=" + getSoldPrice() +
                 ", purchasePrice=" + getPurchasePrice() +
                 ", screenSize=" + screenSize +
-                ", cpuHZ=" + cpuHZ +
+                ", cpuSpeed=" + cpu.speed +
                 ", memoryG=" + memoryG +
                 ", storageG=" + storageG +
                 ", brand='" + brand + '\'' +
@@ -102,7 +137,6 @@ public class Phone extends AbstractExpireDateMerchandise{
                 '}';
     }
 
-    //私有化成员变量，提供get、set方法
     // >> TODO 知识点：多态（相同方法，不同行为）
     // >> TODO 方法可以覆盖，因为方法本质上是一段代码/一段逻辑；而属性只能读/取，顾无法覆盖。
     // >> TODO 为什么推荐在方法中私有化成员变量，然后提供get()/set()？因为只有方法才能覆盖，才有多态。
@@ -116,13 +150,14 @@ public class Phone extends AbstractExpireDateMerchandise{
 
     public double actualValueNow(double leftDatePercentage){return getSoldPrice() * (leftDatePercentage + 0.5);};
 
+    //私有化成员变量，提供get、set方法
     public double getScreenSize(){return this.screenSize;}
 
     public void setScreenSize(double screenSize){this.screenSize = screenSize;}
 
-    public double getCpuHZ(){return this.cpuHZ;}
+    public double getCpuSpeed(){return this.cpu.speed;}
 
-    public void setCpuHZ(double cpuHZ){this.cpuHZ = cpuHZ;}
+    public void setCpuSpeed(double cpuHZ){this.cpu.speed = cpuHZ;}
 
     public int getMemoryG(){return this.memoryG;}
 
@@ -143,4 +178,27 @@ public class Phone extends AbstractExpireDateMerchandise{
     public Merchandise getGift(){return this.gift;}
 
     public void setGift(Merchandise gift){this.gift = gift;}
+}
+
+// >> TODO 写一个非公有类Memory，与静态内部类的区别就在于能否访问类的private的成员变量
+class Memory{
+    private long capacity;
+    private String producer;
+
+    public Memory(long capacity, String producer){
+        this.capacity = capacity;
+        this.producer = producer;
+    }
+
+    public void test(){
+        Phone phone = null;
+        //下面这句报错
+        //phone.screenSize = 9;
+    }
+
+    //提供get()、set()
+    public long getCapacity() { return capacity; }
+    public void setCapacity(long capacity) { this.capacity = capacity; }
+    public String getProducer() { return producer; }
+    public void setProducer(String producer) { this.producer = producer; }
 }

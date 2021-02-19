@@ -13,7 +13,7 @@ public class UseAbsClassOrIntfMain {
         GamePointCard gamePointCard = new GamePointCard(
                 "游戏点卡", 1, 100, 45, 5, ELECTRIC, productDate, expireDate);
         // >> TODO gamePointCard有4种类型：Merchandise、Object、ExpireDateMerchandise、VirtualMerchandise.
-        ExpireDateMerchandise am = gamePointCard;
+        ExpirationDate am = gamePointCard;
 
         System.out.println(am.notExpireInDays(100));
         System.out.println(am.leftDatePercentage());

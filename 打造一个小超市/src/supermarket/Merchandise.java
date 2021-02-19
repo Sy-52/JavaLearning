@@ -11,7 +11,6 @@ public class Merchandise {
     private int count;
     private double soldPrice;
     private double purchasePrice;
-    public static String STATIC_MEMBER = "Common Merchandise";
     private Category category;
 
     // >> TODO 知识点：构造方法
@@ -197,11 +196,12 @@ public class Merchandise {
     }
 
     // >> TODO 知识点：静态变量。命名规范通常为【全大写 + 下划线分割】，不要使用magic number.（没有名字，不知道干啥的数字...）
-    // >> TODO 下面的DISCOUNT_FOR_VIP为所有包中的所有类公用。
+    // >> TODO 下面的两个静态变量为所有包中的所有类公用。
+    public static String STATIC_MEMBER = "Common Merchandise";
     public static double DISCOUNT_FOR_VIP = 0.9;
 
     // >> TODO 知识点：静态方法
-    // >> TODO 静态方法没有this自引用，故不能【直接】访问成员变量.但是你可以在静态方法中自己创建对象/通过传入对象的引用，从而访问成员变量
+    // >> TODO 静态方法没有this自引用，故不能【直接】访问成员变量.但是你可以在静态方法中自己创建对象/通过传入对象的引用，间接访问成员变量
     public static double getDiscountOnDiscount(){
         return DISCOUNT_FOR_VIP;
     }
