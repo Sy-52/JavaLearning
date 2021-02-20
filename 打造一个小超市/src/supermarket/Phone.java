@@ -16,16 +16,24 @@ public class Phone extends AbstractExpireDateMerchandise{
 
     private double screenSize;
     private CPU cpu;
-    private int memoryG;
-    private int storageG;
+    private Memory memory;
+    private UnitSpec storage;
     private String brand;
     private String os = "安卓";
     // >> TODO 知识点：final修饰符
     //private final Merchandise gift;
     private Merchandise gift;
 
+    private int capacity;
+
+    // >> TODO 接口也可定义为静态内部接口。但一般不这么做，接口一般作为单独一个文件放在外部，让更多人实现它。
+    public static interface UnitSpec {
+        public double getNumSpec();
+        public String getProducer();
+    }
+
     // >> TODO 知识点：静态内部类（在类中使用static修饰的类，在继承、实现接口方面和普通类相同）
-    // >> TODO 静态内部类和静态变量、静态方法一样，都是类的内部的静态组成部分之一。
+    // >> TODO 静态内部类和静态变量、静态方法一样，都是类内部的静态组成部分之一。
     // >> TODO 静态内部类常用来实现单例模式。（利用java的类加载机制，在你用的时候再初始化静态实例，避免浪费）
     public static class CPU{
         private double speed;
@@ -38,8 +46,9 @@ public class Phone extends AbstractExpireDateMerchandise{
         // >> TODO 静态内部类中可以访问外部private的成员变量
         public double getSpeed(){
             //下面代码没有实际意义，仅演示可访问外部private的成员变量
+            //静态方法没有this自引用，所以要用下面的形式来获得外部类的引用。
             Phone phone = null;
-            phone.memoryG = 256;
+            phone.screenSize = 4.5;
             return speed;
         }
         public void setSpeed(double speed){ this.speed = speed; }
@@ -66,10 +75,29 @@ public class Phone extends AbstractExpireDateMerchandise{
         //如果在main()中调用的是该无参的构造方法，java会默认隐式的调用super(),即父类中【程序员自己"显式"定义】的无参的构造方法，父类中没有"显式"定义则会出错。
         //若在父类中，程序员自己没有"显式"定义无参的构造方法，则在该子类的无参的构造方法中必须用super(参数1,参数2...)调用父类中写的重载的构造方法。
         super();
+        // >> TODO 知识点：局部内部类
+        // >> TODO 布局内部类和成员方法、成员变量一样，都是类的组成部分。
+        // >> TODO 不能有访问控制符，类似局部变量，所有东西出了内部在外部就不可被访问
+        class Storage implements UnitSpec{
+            private String producer;
+
+            public Storage(String producer){this.producer = producer;}
+            @Override
+            public double getNumSpec() { return 128.0; }
+
+            public String getProducer() { return producer; }
+
+            public String toString() {
+                return "Storage{" +
+                        "producer='" + producer + '\'' +
+                        '}';
+            }
+        }
+
         this.screenSize = 4.5;
         this.cpu = new CPU(5.5, "AMD");
-        this.memoryG = 6;
-        this.storageG = 128;
+        this.memory = new Memory(8,"Inter");
+        this.storage = new Storage("Kingston");
         this.brand = "Unknow";
         this.os = "Unknow";
         this.gift = null;
@@ -83,11 +111,34 @@ public class Phone extends AbstractExpireDateMerchandise{
         //this.setName(name);this.setId(Id);this.setCount(count);this.setSoldPrice(soldPrice);this.setPurchasePrice(purchasePrice);
         // >> TODO 直接使用super调用父类的构造方法。和上述注释的语句是等价的。
         super(name, Id, count, soldPrice, purchasePrice,category, productDate, expirationDate);
-        //将初始化的代码封装在一个init()中，在构造方法中调用。
+
+        class Storage implements UnitSpec{
+            private String producer;
+            //final可写可不写
+            final double localCapacity = storageG;
+
+            public Storage(String producer){this.producer = producer;}
+            @Override
+            public double getNumSpec() {
+                // >> TODO 本来应该写在局部内部类的成员变量capacity我写在外部类Phone的成员变量中，可以通过下面这种形式去访问
+                // >> TODO 可以访问参数、局部变量，但是参数和局部变量必须要能用final修饰。（只赋值一次）
+                // >> TODO 如下面的storageG，其并没有在内部类中用成员变量保存，但因为是final的，指得就是保存在形参中的传入实参。
+                return Math.max(Phone.this.capacity,Math.max(storageG,localCapacity));
+            }
+
+            public String getProducer() { return producer; }
+
+            public String toString() {
+                return "Storage{" +
+                        "producer='" + producer + '\'' +
+                        '}';
+            }
+        }
+
         this.screenSize = screenSize;
         this.cpu = new CPU(cpuHZ, "骁龙865");
-        this.memoryG = memoryG;
-        this.storageG = storageG;
+        this.memory = new Memory(memoryG,"Inter");
+        this.storage = new Storage("Kingston");
         this.brand = brand;
         this.os = os;
         this.gift = gift;
@@ -98,7 +149,8 @@ public class Phone extends AbstractExpireDateMerchandise{
         super.describe();
         System.out.println("手机厂商：" + this.brand + " ; 手机系统为:" + this.os +
                 " ; 屏幕:" + this.screenSize + "寸 ; CPU信息:" + this.cpu  +
-                " ; 内存:" + this.storageG + "Gb" + " ; 礼物:" + this.gift);
+                " ; 内存:" + this.memory + "存储：" + this.storage + 
+                " ; 礼物:" + this.gift);
     }
 
     public double MAX_BUY_ONE_ORDER = 5;
@@ -129,8 +181,8 @@ public class Phone extends AbstractExpireDateMerchandise{
                 ", purchasePrice=" + getPurchasePrice() +
                 ", screenSize=" + screenSize +
                 ", cpuSpeed=" + cpu.speed +
-                ", memoryG=" + memoryG +
-                ", storageG=" + storageG +
+                ", memoryG=" + memory.getCapacity() +
+                ", storageG=" + storage +
                 ", brand='" + brand + '\'' +
                 ", os='" + os + '\'' +
                 ", gift=" + gift +
@@ -159,13 +211,11 @@ public class Phone extends AbstractExpireDateMerchandise{
 
     public void setCpuSpeed(double cpuHZ){this.cpu.speed = cpuHZ;}
 
-    public int getMemoryG(){return this.memoryG;}
+    public int getMemoryG(){return this.memory.getCapacity();}
 
-    public void setMemoryG(int memoryG){this.memoryG = memoryG;}
+    public void setMemoryG(int memoryG){this.memory.setCapacity(memoryG);}
 
-    public int getStorageG(){return this.storageG;}
-
-    public void setStorageG(double cpuHZ){this.storageG = storageG;}
+    public double getStorageG(){return storage.getNumSpec();}
 
     public String getBrand(){return this.brand;}
 
@@ -182,10 +232,10 @@ public class Phone extends AbstractExpireDateMerchandise{
 
 // >> TODO 写一个非公有类Memory，与静态内部类的区别就在于能否访问类的private的成员变量
 class Memory{
-    private long capacity;
+    private int capacity;
     private String producer;
 
-    public Memory(long capacity, String producer){
+    public Memory(int capacity, String producer){
         this.capacity = capacity;
         this.producer = producer;
     }
@@ -197,8 +247,8 @@ class Memory{
     }
 
     //提供get()、set()
-    public long getCapacity() { return capacity; }
-    public void setCapacity(long capacity) { this.capacity = capacity; }
+    public int getCapacity() { return capacity; }
+    public void setCapacity(int capacity) { this.capacity = capacity; }
     public String getProducer() { return producer; }
     public void setProducer(String producer) { this.producer = producer; }
 }
