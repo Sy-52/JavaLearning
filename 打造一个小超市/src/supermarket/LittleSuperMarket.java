@@ -1,11 +1,10 @@
 package supermarket;
 
 import java.util.Date;
-
 import static supermarket.Category.*;
 
 public class LittleSuperMarket {
-    //私有化LittleSuperMarket类的所有成员变量
+    // >> TODO 知识点：封装。（私有化LittleSuperMarket类的所有成员变量）
     private String superMarketName;
     private String address;
     private int parkingCount;
@@ -20,23 +19,16 @@ public class LittleSuperMarket {
         this.address = address;
         this.parkingCount = parkingCount;
         this.incomingSum = incomingSum;
-        this.merchandise = new Merchandise[200];
-        this.merchandiseSold = new int[this.merchandise.length];
 
+        //直接在构造方法中初始化merchandise、merchandiseSold两个成员变量。
         Date productDate = new Date();
         Date expireDate = new Date(productDate.getTime() + 365L * 24 * 3600 * 1000);
-        Merchandise giftForPhone = new Merchandise("手机赠品-64g内存卡", 2, 999, 60, 30,ELECTRIC);;
-
-        //初始化200件商品，并对每10件、每100件商品做特殊赋值
+        Merchandise giftForPhone = new Merchandise("手机赠品-64g内存卡", 2, 999, 60, 30,ELECTRIC);
+        this.merchandise = new Merchandise[200];
+        this.merchandiseSold = new int[this.merchandise.length];
         for(int i = 0; i < this.merchandise.length; i++){
-            /*
-                以下为老式初始化的注释：
-                这里先创建一个Merchandise类的实例m再赋值给all[i]的原因为：
-                new Merchandise[200]仅意味着创建了一个长度为200的Merchandise类型的数组。
-                里面的数组元素littleSuperMarket.merchandise[i]的值仍然为null.
-                所以如果直接用all[i].count = 200去给成员变量赋值的话，会报NPE
-            */
             if(i > 0 && i % 100 == 0){
+                //下面这句，细品
                 //giftForPhone = new Merchandise("手机赠品-128g内存卡", 1, 999, 120, 60);
                 this.merchandise[i] = new ShellColorChangePhone(
                         "手机" + i, i, 200, 1999, 999, ELECTRIC, productDate, expireDate,4.5, 3.5,
@@ -53,9 +45,9 @@ public class LittleSuperMarket {
         }
     }
 
-    //getBiggestProfitMerchandise()用以返回LittleSuperMarket.merchandise[]中净利润最高的商品的引用。该方法的返回值为Merchandise类型。
+    //getBiggestProfitMerchandise()用以返回LittleSuperMarket.merchandise[]中净利润最高的商品的引用。
     public Merchandise getBiggestProfitMerchandise(){
-        // >> TODO 知识点：this自引用指向的是调用该方法的对象(保存的是该对象的地址）
+        // >> TODO 知识点：this自引用指向的是调用该方法的对象(保存的是这个对象的地址）
         System.out.println("LittleSuperMarket类的getBiggestProfitMerchandise方法使用的对象是：" + this);
         Merchandise curr = null;
         // >> TODO 知识点：下面为什么能用private修饰的merchandise而不报错？
@@ -100,7 +92,7 @@ public class LittleSuperMarket {
         return false;
     }
 
-    //对封装的成员变量提供get、set方法
+    //提供get()、set()
     public String getSuperMarketName(){return this.superMarketName;}
 
     public void setSuperMarketName(String name){this.superMarketName = name;}

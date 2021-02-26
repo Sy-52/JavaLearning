@@ -2,14 +2,14 @@ import supermarket.*;
 import person.*;
 import java.util.Scanner;
 
-public class RunLittleSuperMarketAppMain {
+public class LittleSuperMarketAppMain {
     public static void main(String[] args) {
-        // >> TODO 注明：RunLittleSuperMarketAppMain.java是最初的版本，该程序主要写的是开超市的逻辑。
+        // >> TODO 注明：LittleSuperMarketAppMain.java是梦开始的地方，该文件中写的是开超市的逻辑，其他的一切都是依此而升级。
 
-        // >> TODO 知识点：使用littleSuperMarket类的构造方法，并用构造方法来初始化，能比最开始全部代码写在这里极大的简化main()中的逻辑
+        // >> TODO 知识点：调用littleSuperMarket类的构造方法来进行初始化，能比顺序编程、将全部代码写在main()中，极大的简化逻辑。
         LittleSuperMarket littleSuperMarket = new LittleSuperMarket("百伦广场","DJY大道211号",200,0.0);
         
-        //将littleSuperMarket.merchandise这个引用赋给all，避免该长串字符的重复
+        //避免该长串字符的重复
         Merchandise[] all = littleSuperMarket.getMerchandise();
 
         System.out.println("超市开门啦！");
@@ -73,13 +73,13 @@ public class RunLittleSuperMarketAppMain {
                             totalCost += numToBuy * m.getSoldPrice();
                             customer.setMoney(customer.getMoney() - totalCost);
                             m.setCount(m.getCount() -  numToBuy);
-                            // >> TODO 下面这句为什么能行？细品
+                            // >> TODO 下面这句的语法，细品
                             littleSuperMarket.getMerchandiseSold()[index] += numToBuy;
                         }
                     }
                 }
             }
-            //顾客完成购买后,离开
+            //顾客完成购买，离开
             if(customer.getIsDrivingCar()){
                 littleSuperMarket.setParkingCount(littleSuperMarket.getParkingCount() + 1);
             }
@@ -92,7 +92,7 @@ public class RunLittleSuperMarketAppMain {
         System.out.println("今日总的营业额为" + littleSuperMarket.getIncomingSum() + ".营业情况如下：");
         //拉一个销售清单
         for(int i = 0;i < all.length; i++){
-            // >> TODO 这里为何要重新创建m？（变量的作用域）
+            // >> TODO 由于变量的作用域，这里要重新创建m
             Merchandise m = all[i];
             int numSold = littleSuperMarket.getMerchandiseSold()[i];
             if( numSold!= 0){

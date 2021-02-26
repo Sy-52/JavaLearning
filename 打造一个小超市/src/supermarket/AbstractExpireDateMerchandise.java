@@ -3,16 +3,14 @@ package supermarket;
 import java.util.Date;
 
 // >> TODO 抽象类可以继承别的类/抽象类/实现接口
-// >> TODO 抽象类中可以有：实现接口的方法；自己定义的方法。也可不定义任何抽象方法
-// >> TODO 抽象类不可被实例化。
+// >> TODO 抽象类中可以有：实现接口的方法；自己定义的方法、抽象方法。
+// >> TODO 抽象类不可被实例化。（后面用匿名类实例化了... = = ）
 public abstract class AbstractExpireDateMerchandise extends Merchandise implements ExpirationDate {
     private Date productDate;
     private Date expirationDate;
 
-    // >> TODO 思考：为何抽象类不可被实例化却还要写构造方法？
-    public AbstractExpireDateMerchandise(){
-        super();
-    }
+    // >> TODO 这里有一个小知识点，为何抽象类不可被实例化却还要写构造方法？
+    public AbstractExpireDateMerchandise(){ super(); }
 
     public AbstractExpireDateMerchandise(String name, int id, int count, double soldPrice, double purchasePrice, Category category, Date productDate, Date expirationDate){
         super(name, id, count, soldPrice, purchasePrice, Category.ELECTRIC);
@@ -51,10 +49,10 @@ public abstract class AbstractExpireDateMerchandise extends Merchandise implemen
 
     public Date getExpirationDate() { return this.expirationDate; }
 
-    // >> TODO 因为接口中没有getSoldPrice()，所以无法在接口中写缺省方法，只能分别在实现接口的类中去实现。
-    // >> TODO 而抽象类则可以把actualValueNow()给抽象出来。（其实点卡、手机的算实际价值的方法是一样的，应该抽象出来）
+    // >> TODO 因为接口中没有getSoldPrice()，所以无法直接在接口中使用this.getSoldPrice()，只能在实现接口的类中去分别实现actualValueNow()。
+    // >> TODO 而抽象类则可以把actualValueNow()给抽象出来。（其实点卡、手机的算实际价值的逻辑是一样的，应该抽象出来）
     public double actualValueNow(double leftDatePercentage) { return leftDatePercentage * this.getSoldPrice(); }
 
-    // >> TODO 抽象类中可以自己定义抽象方法，可以是protected/缺省。而普通类中不能定义abstract类型的方法
+    // >> TODO 抽象类中可以自己定义抽象方法（protected/缺省)。而普通类中不能定义abstract类型的方法
     //protected abstract void test();
 }

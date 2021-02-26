@@ -10,10 +10,6 @@ public class ShellColorChangePhone extends Phone{
             double cpuHZ, int memoryG, int storageG, String brand, String os, Merchandise gift, boolean enableShellColorChange
     ){
         super(name, Id, count, soldPrice, purchasePrice, category, productDate, expirationDate, screenSize, cpuHZ, memoryG, storageG, brand, os, gift);
-        init(enableShellColorChange);
-    }
-
-    public void init(boolean enableShellColorChange){
         this.enableShellColorChange = enableShellColorChange;
     }
 

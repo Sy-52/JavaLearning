@@ -2,7 +2,7 @@ import supermarket.*;
 
 import java.util.Scanner;
 
-public class RunLittleSuperMarketAppMainV2 {
+public class LittleSuperMarketAppMainV2 {
     public static void main(String[] args) {
 
         LittleSuperMarket littleSuperMarket = new LittleSuperMarket("百伦广场","DJY大道211号",200,0.0);

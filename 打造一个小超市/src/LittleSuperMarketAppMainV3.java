@@ -1,20 +1,20 @@
 import supermarket.*;
 
-//导入静态方法
+//导入静态变量、方法
 import static supermarket.Merchandise.DISCOUNT_FOR_VIP;
 import static supermarket.Merchandise.getDiscountOnDiscount;
 
-public class RunLittleSuperMarketAppMainV3 {
+public class LittleSuperMarketAppMainV3 {
     public static void main(String[] args) {
         LittleSuperMarket littleSuperMarket = new LittleSuperMarket("百伦广场","DJY大道211号",200,0.0);
         Merchandise[] all = littleSuperMarket.getMerchandise();
 
+        System.out.println();
         System.out.println("LittleSuperMarket类的对象是：" + littleSuperMarket);
 
         //下面这句就是父类的引用指向子类的实例
         Merchandise m = littleSuperMarket.getBiggestProfitMerchandise();
         System.out.println();
-
         System.out.println("下面请利润最高的商品做自我介绍：");
         //m.describe()中this自引用指向的是子类实例，所以会调子类实例的describe()
         m.describe();
@@ -26,7 +26,7 @@ public class RunLittleSuperMarketAppMainV3 {
         System.out.println();
 
         // >> TODO 知识点：方法的重载
-        //这里有一个点。下面的cost为-2，costVip为17990.为何？思考
+        //这里有一个坑没填。下面的cost为-2，costVip为17990.为何？
         double cost = m.buy(10);
         System.out.println();
         //下面这个方法我没有在Phone类中写override的方法，故而会去调用Merchandise类中的方法，导致购买成功。

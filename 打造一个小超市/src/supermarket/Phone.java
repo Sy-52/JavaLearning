@@ -24,9 +24,29 @@ public class Phone extends AbstractExpireDateMerchandise{
     //private final Merchandise gift;
     private Merchandise gift;
 
+    //本应写在局部内部类内部的成员变量capacity
     private int capacity;
 
-    // >> TODO 接口也可定义为静态内部接口。但一般不这么做，接口一般作为单独一个文件放在外部，让更多人实现它。
+    // >> TODO 无论是内部类/匿名类，类只有一个，对象可以有多个。不会在每次执行到内部类声明的地方就创建一个新的类。
+    //用匿名类创建抽象类、接口的实例。（注意：要调用抽象类的构造方法，传递参数）
+    //此处对标成员内部类
+    private UnitSpecAbs anyWhere = new UnitSpecAbs(1.2, "default") {
+        public double getNumSpec() { return this.getSpec(); }
+
+        public String getProducer() { return this.getProduceStr(); }
+    };
+
+    private static UnitSpec anywhereStatic = new UnitSpec() {
+        //无法使用Phone.this
+        //Phone.this.brand = "";
+        @Override
+        public double getNumSpec() {return Math.random();}
+
+        public String getProducer() {return "here";}
+    };
+
+    // >> TODO 定义了一个静态内部接口，配合匿名类来创建该接口的实例。
+    // >> TODO 接口一般不这么定义，通常接口作为一个文件放在外部，让更多人实现。
     public static interface UnitSpec {
         public double getNumSpec();
         public String getProducer();
@@ -45,7 +65,7 @@ public class Phone extends AbstractExpireDateMerchandise{
         }
         // >> TODO 静态内部类中可以访问外部private的成员变量
         public double getSpeed(){
-            //下面代码没有实际意义，仅演示可访问外部private的成员变量
+            //下面代码没有实际意义，仅演示静态内部类可访问外部private的成员变量
             //静态方法没有this自引用，所以要用下面的形式来获得外部类的引用。
             Phone phone = null;
             phone.screenSize = 4.5;
@@ -75,29 +95,27 @@ public class Phone extends AbstractExpireDateMerchandise{
         //如果在main()中调用的是该无参的构造方法，java会默认隐式的调用super(),即父类中【程序员自己"显式"定义】的无参的构造方法，父类中没有"显式"定义则会出错。
         //若在父类中，程序员自己没有"显式"定义无参的构造方法，则在该子类的无参的构造方法中必须用super(参数1,参数2...)调用父类中写的重载的构造方法。
         super();
-        // >> TODO 知识点：局部内部类
-        // >> TODO 布局内部类和成员方法、成员变量一样，都是类的组成部分。
-        // >> TODO 不能有访问控制符，类似局部变量，所有东西出了内部在外部就不可被访问
-        class Storage implements UnitSpec{
-            private String producer;
-
-            public Storage(String producer){this.producer = producer;}
-            @Override
-            public double getNumSpec() { return 128.0; }
-
-            public String getProducer() { return producer; }
-
-            public String toString() {
-                return "Storage{" +
-                        "producer='" + producer + '\'' +
-                        '}';
-            }
-        }
-
         this.screenSize = 4.5;
         this.cpu = new CPU(5.5, "AMD");
         this.memory = new Memory(8,"Inter");
-        this.storage = new Storage("Kingston");
+        // >> TODO 知识点：匿名类（在匿名类中实现接口/抽象类中的抽象方法就可创建实例）
+        // >> TODO 匿名类在哪个范围去声明，就符合哪个范围的内部类的特性
+        this.storage  = new UnitSpec(){
+            //匿名类中可定义局部变量，和普通的类一样
+            private int abc;
+
+            @Override
+            public double getNumSpec() { return 128.0; }
+
+            public String getProducer() { return "Kingston"; }
+
+            //匿名类中也可以定义局部方法
+            public String toString() {
+                return "Storage{" +
+                        "producer='" + "Kingston" + '\'' +
+                        '}';
+            }
+        };
         this.brand = "Unknow";
         this.os = "Unknow";
         this.gift = null;
@@ -111,7 +129,9 @@ public class Phone extends AbstractExpireDateMerchandise{
         //this.setName(name);this.setId(Id);this.setCount(count);this.setSoldPrice(soldPrice);this.setPurchasePrice(purchasePrice);
         // >> TODO 直接使用super调用父类的构造方法。和上述注释的语句是等价的。
         super(name, Id, count, soldPrice, purchasePrice,category, productDate, expirationDate);
-
+        // >> TODO 知识点：局部内部类（在方法中使用）
+        // >> TODO 局部内部类和成员变量、成员方法一样，都是类的组成部分。
+        // >> TODO 局部内部类和局部变量一样，不能有访问控制符。所有东西出了局部内部类在外部就不可被访问
         class Storage implements UnitSpec{
             private String producer;
             //final可写可不写
@@ -122,7 +142,7 @@ public class Phone extends AbstractExpireDateMerchandise{
             public double getNumSpec() {
                 // >> TODO 本来应该写在局部内部类的成员变量capacity我写在外部类Phone的成员变量中，可以通过下面这种形式去访问
                 // >> TODO 可以访问参数、局部变量，但是参数和局部变量必须要能用final修饰。（只赋值一次）
-                // >> TODO 如下面的storageG，其并没有在内部类中用成员变量保存，但因为是final的，指得就是保存在形参中的传入实参。
+                // >> TODO 如下面的storageG指得就是保存在形参中的传入的实参。
                 return Math.max(Phone.this.capacity,Math.max(storageG,localCapacity));
             }
 
@@ -133,6 +153,8 @@ public class Phone extends AbstractExpireDateMerchandise{
                         "producer='" + producer + '\'' +
                         '}';
             }
+
+            //局部内部类中甚至可以再定义局部内部类....
         }
 
         this.screenSize = screenSize;
@@ -207,7 +229,7 @@ public class Phone extends AbstractExpireDateMerchandise{
 
     public void setScreenSize(double screenSize){this.screenSize = screenSize;}
 
-    public double getCpuSpeed(){return this.cpu.speed;}
+    public CPU getCpu(){return this.cpu;}
 
     public void setCpuSpeed(double cpuHZ){this.cpu.speed = cpuHZ;}
 
@@ -244,6 +266,13 @@ class Memory{
         Phone phone = null;
         //下面这句报错
         //phone.screenSize = 9;
+    }
+
+    public String toString() {
+        return "Memory{" +
+                "capacity=" + capacity +
+                ", producer='" + producer + '\'' +
+                '}';
     }
 
     //提供get()、set()

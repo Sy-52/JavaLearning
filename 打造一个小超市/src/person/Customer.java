@@ -11,7 +11,7 @@ public class Customer {
         this.isDrivingCar = Math.random() > 0.5;
     }
 
-    //封装的成员变量的get、set方法
+    //提供get()、set()
     public String getName(){return this.name;}
 
     public void setName(String name){this.name = name;}

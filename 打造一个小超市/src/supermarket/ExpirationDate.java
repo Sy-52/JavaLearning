@@ -2,9 +2,9 @@ package supermarket;
 
 import java.util.Date;
 
-// >> TODO 接口只是定义了一个规范，无法被实例化。
-// >> TODO 有方法的接口，并不是多继承。接口只能继承接口而不能继承类，所以无论你implements多少接口，都不会继承任何成员变量，只能获得一些方法，仅此而已。
-// >> TODO 接口和抽象类，最大的区别就是，接口中不能声明实例变量。接口只能间接通过实现接口的类来获取数据。
+// >> TODO 接口仅定义了一个规范，无法被实例化。（后面用匿名类实例化了... = = ）
+// >> TODO 一个类implements了有方法的接口，并不意味着多继承了。因为接口只能继承接口而不能继承类，所以无论你implements多少接口，都不会继承任何成员变量，只能获得一些方法，仅此。
+// >> TODO 接口和抽象类最大的区别是：接口不能声明实例变量。接口只能通过实现接口的类来间接的获取数据。
 public interface ExpirationDate {
 
     // >> TODO java8中，允许有【缺省实现的抽象方法】，用default修饰，可以有方法体。
@@ -25,7 +25,7 @@ public interface ExpirationDate {
         return (1.0 * daysBeforeExpire())/(getExpirationDate().getTime() - getProductDate().getTime());
     };
 
-    // >> TODO java8中,接口中可以有【私有方法】，不需要用default修饰
+    // >> TODO java8中,接口中可以有【私有方法】，无需用default修饰
     private long daysBeforeExpire(){
         return daysBetween(System.currentTimeMillis(), this.getExpirationDate().getTime());
     }
@@ -34,7 +34,7 @@ public interface ExpirationDate {
         return daysBetween(this.getProductDate().getTime(), System.currentTimeMillis());
     }
 
-    // >> TODO 接口中可以有静态方法，不需要用default修饰。可以被实现这个接口的类继承.
+    // >> TODO 接口中可以有静态方法，无需用default修饰。可以被实现这个接口的类继承.
     public static long daysBetween(long from, long to){
         long gap = to - from;
         if(gap < 0){return -1;}
@@ -60,6 +60,5 @@ public interface ExpirationDate {
     public abstract double actualValueNow(double leftDatePercentage);
 
     // >> TODO 接口里无法定义局部变量，变量默认为public static final.（写不写都一样）
-    // >> TODO 接口中不定义局部变量，因为不会创建它的实例；创建它的实例也没有意义，因为没有方法。
     public static final int VAL_IN_INTERFACE = 999;
 }
