@@ -1,4 +1,4 @@
-import java.util.Arrays;
+package interfaces;
 
 import java.util.Date;
 
@@ -18,7 +18,7 @@ public class ShoppingCart {
 
     public boolean canHolder(){return curr < max;};
 
-    public boolean buy(Merchandise m, int countToBuy){
+    public boolean add(Merchandise m, int countToBuy){
         if(!canHolder()){
             return false;
         }

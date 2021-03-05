@@ -1,3 +1,5 @@
+package interfaces;
+
 public enum Category {
     FOOD(10, 300),
     COOK(200,200),
@@ -5,8 +7,8 @@ public enum Category {
     CLOTHES(200,1000),
     ELECTRIC(200,10000);
 
-    int lowerPrice;
-    int higherPrice;
+    private int lowerPrice;
+    private int higherPrice;
 
     Category(int lowerPrice, int higherPrice){
         this.lowerPrice = lowerPrice;
