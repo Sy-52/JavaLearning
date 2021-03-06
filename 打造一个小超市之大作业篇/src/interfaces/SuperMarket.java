@@ -1,11 +1,13 @@
 package interfaces;
 
+import impI.Category;
+
 public interface SuperMarket {
 
     Merchandise[] getMerchandises();
 
     /**
-     * 根据顾客选择的种类，返回5个随机的该种类的商品
+     * 根据顾客选择的种类 ，返回5个随机的该种类的商品
      * @param category 顾客选择的商品种类
      */
     Merchandise[] getRandomMerchandiseOfCategory(Category category);

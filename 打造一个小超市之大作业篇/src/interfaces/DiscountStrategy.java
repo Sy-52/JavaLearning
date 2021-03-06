@@ -1,6 +1,8 @@
 package interfaces;// >> TODO 某一个种类的商品，满多少减多少
 // >> TODO 某一个种类的商品，第二件半价
 
+import impI.ShoppingCart;
+
 public interface DiscountStrategy {
     /**
      * @param shoppingCart

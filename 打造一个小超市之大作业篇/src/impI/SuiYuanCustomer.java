@@ -1,6 +1,5 @@
 package impI;
 
-import interfaces.Category;
 import interfaces.Merchandise;
 
 public class SuiYuanCustomer extends AbsCustomer{

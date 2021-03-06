@@ -1,5 +1,7 @@
 package interfaces;
 
+import impI.Category;
+
 public interface Merchandise {
 
     String getName();

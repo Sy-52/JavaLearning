@@ -1,5 +1,8 @@
 package interfaces;
 
+import impI.Category;
+import impI.ShoppingCart;
+
 public interface Customer {
 
     String getCusId();

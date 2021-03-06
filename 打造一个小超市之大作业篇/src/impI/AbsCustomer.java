@@ -34,7 +34,7 @@ public abstract class AbsCustomer implements Customer{
 
     public boolean wantToCheckout(){
         guangLeft--;
-        return guangLeft <= 0;
+        return guangLeft >= 0;
     }
 
     public double payFor(ShoppingCart shoppingCart, double totalCost){

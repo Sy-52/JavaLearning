@@ -1,4 +1,4 @@
-package interfaces;
+package impI;
 
 public enum Category {
     FOOD(10, 300),

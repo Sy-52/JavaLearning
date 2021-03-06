@@ -14,8 +14,9 @@ public class ShoppingUtil {
         System.out.println(String.valueOf(obj));
     }
 
-    public static SuperMarket createSuperMarket(){
+    public static SimpleSuperMarket createSuperMarket(){
         int merchandisePerCategory = 10;
+        // >> TODO 知识点：Merchandise接口中并没有构造方法，为什么能new？
         Merchandise[] all = new Merchandise[Category.values().length * 10];
         for(Category category : Category.values()){
             for(int i = 0; i < merchandisePerCategory; i++){
@@ -28,11 +29,11 @@ public class ShoppingUtil {
         }
 
         SimpleSuperMarket superMarket = new SimpleSuperMarket(all);
+        // >> TODO 知识点：引用指派。试着把下面三句拿到主程序中去。
         output("请输入超市的名字");
         String s = input().next();
-        if(s.length() > 0){
-            superMarket.setName(s.trim());
-        }
+        if(s.length() > 0){ superMarket.setName(s.trim()); }
+
         return superMarket;
     }
 

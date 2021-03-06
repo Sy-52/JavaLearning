@@ -12,6 +12,7 @@ public class SimpleShopman implements Shopman {
 
     @Override
     public void serveCustomer(Customer customer) {
+        // >> TODO 知识点：保护性编程。仔细品位下面这4句。
         int maxTypeToChoose = MAX_BUY_DEFAULT;
         if(customer instanceof AbsCustomer){
             maxTypeToChoose = ((AbsCustomer)customer).getGuangCount();
@@ -23,6 +24,8 @@ public class SimpleShopman implements Shopman {
             Category category = customer.chooseCategory();
             Merchandise[] toChoose = superMarket.getRandomMerchandiseOfCategory(category);
             for(Merchandise m : toChoose){
+                //按照getRandomMerchandiseOfCategory()的算法，不一定能返回"足够5个"商品，可能会有null
+                if(m == null)continue;
                 int buyCount = customer.buyMerchandise(m);
                 if(buyCount > 0){
                     shoppingCart.add(m,buyCount);
@@ -31,7 +34,7 @@ public class SimpleShopman implements Shopman {
                 }
             }
         }
-        //该结账了...
+        //结账
         double originCost = shoppingCart.calculateOriginCost();
         double finalCost = originCost;
 

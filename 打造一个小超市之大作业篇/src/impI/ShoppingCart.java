@@ -1,4 +1,6 @@
-package interfaces;
+package impI;
+
+import interfaces.Merchandise;
 
 import java.util.Date;
 
@@ -47,7 +49,7 @@ public class ShoppingCart {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("=========================");
+        sb.append("==========================\n");
         sb.append("购物时间：").append(new Date()).append("\n");
         int pos = -1;
         for(Merchandise m : buy){
