@@ -18,7 +18,7 @@ public class ShoppingUtil {
         int merchandisePerCategory = 10;
         Merchandise[] all = new Merchandise[Category.values().length * 10];
         for(Category category : Category.values()){
-            for(int i = 0; i < merchandisePerCategory - 1; i++){
+            for(int i = 0; i < merchandisePerCategory; i++){
                 double soldPrice = Math.random() * (category.getHigherPrice() - category.getLowerPrice()) + category.getLowerPrice();
                 double purchasePrice = soldPrice * 0.7;
                 all[category.ordinal() * 10 + i] = new SimpleMerchandise(

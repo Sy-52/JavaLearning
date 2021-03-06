@@ -1,6 +1,7 @@
 package impI;
 
 import interfaces.*;
+import static util.ShoppingUtil.output;
 
 public class SimpleSuperMarket implements SuperMarket{
     private String name;
@@ -11,11 +12,11 @@ public class SimpleSuperMarket implements SuperMarket{
     //customerCount：超市共计服务过多少客户
     private int customerCount;
 
-    //没想到超市中的商品居然是在外部初始化好，然后传引用进来的...
     public SimpleSuperMarket(Merchandise[] all){
         this.all = all;
         allCount = new int[all.length];
         for(int i = 0; i < all.length; i++){
+            if(all[i] == null)continue;
             allCount[i] = all[i].getCount();
         }
     }
@@ -38,7 +39,15 @@ public class SimpleSuperMarket implements SuperMarket{
     }
 
     public void dailyReport(){
-        //臧萌老师单独弄了一个工具package，后面回头再来写该方法
+        output("营业额为" + totalMoneyEarn);
+        output("商品的售出情况如下：");
+        for(int i = 0; i < all.length; i++){
+            if(allCount[i] != all[i].getCount()){
+                System.out.println(
+                        all[i].getCategory().name() + "\t" + all[i].getName() + "\t" +
+                                (allCount[i] - all[i].getCount()));
+            }
+        }
     }
 
     public void setName(String name){this.name = name;}

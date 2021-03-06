@@ -14,22 +14,12 @@ public class ShoppingAppMain {
 
         boolean open = true;
         while(open){
-            new ShoppingTask(shopman).executeTask();
+            Customer customer = createCustomer(true);
+            shopman.serveCustomer(customer);
             output("是否继续营业？");
             open = !input().next().trim().equalsIgnoreCase("no");
         }
 
         superMarket.dailyReport();
-    }
-}
-
-class ShoppingTask{
-    private Shopman shopman;
-
-    public ShoppingTask(Shopman shopman){this.shopman = shopman;}
-
-    public void executeTask(){
-        Customer customer = createCustomer(true);
-        shopman.serveCustomer(customer);
     }
 }
