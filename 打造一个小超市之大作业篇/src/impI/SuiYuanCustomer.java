@@ -11,7 +11,7 @@ public class SuiYuanCustomer extends AbsCustomer{
         super(custId,shouldBuy,DEFAULT_GUANG_COUNT);
     }
 
-    public int buyMerchandise(Merchandise merchandise){
+    public int buyJudge(Merchandise merchandise){
         double chanceToBuy = (merchandise.getCategory() == getShouldBuy()) ? MUST_BUY_CHANCE : GUANG_BUY_CHANCE;
         if(chanceToBuy < Math.random()){
             return 0;

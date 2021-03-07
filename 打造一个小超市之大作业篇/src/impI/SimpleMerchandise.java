@@ -18,7 +18,7 @@ public class SimpleMerchandise implements Merchandise{
     }
 
     public void buy(int count){
-        // >> TODO 思考题：如果顾客所要购买的商品数量超过商品库存，怎么写？
+        // >> TODO 思考题：虽然根据SuiYuanCustomer和ThinkAndBuyCustomer的buyMerchandise的逻辑，不可能出现买超的情况。但是，如果增加场景，顾客要购买的商品数超过了商品库存，怎么写？
         this.count -= count;
     }
 

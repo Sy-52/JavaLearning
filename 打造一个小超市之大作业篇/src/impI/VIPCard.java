@@ -16,7 +16,7 @@ public enum VIPCard implements Card{
     VIPCard(double discount){ this.discount = discount;}
 
     @Override
-    public double processCardDiscount(double totalCostAfterDiscount) {
+    public double processCardDiscount(double totalCost, double totalCostAfterDiscount, Customer customer, ShoppingCart shoppingCart) {
         return totalCostAfterDiscount * (1 - discount);
     }
 }

@@ -6,6 +6,7 @@ import interfaces.*;
 import java.util.Scanner;
 
 public class ShoppingUtil {
+    // >> TODO 知识点：final是不可变值。用它的前提是这个变量的值确实不需要变化。
     private static final Scanner in = new Scanner(System.in);
 
     public static Scanner input(){ return in; }

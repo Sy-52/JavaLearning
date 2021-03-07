@@ -9,7 +9,7 @@ public class ThinkAndBuyCustomer extends AbsCustomer implements HasCard{
         super(custId, category, DEFAULT_GUANG_COUNT);
     }
 
-    public int buyMerchandise(Merchandise merchandise){
+    public int buyJudge(Merchandise merchandise){
         Category category = merchandise.getCategory();
         if(category == getShouldBuy()){
             return 1;

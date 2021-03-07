@@ -47,8 +47,6 @@ public abstract class AbsCustomer implements Customer{
 
     public double getMoneySpent(){ return moneySpent;}
 
-    public void setMoneySpent(double moneySpent){ this.moneySpent = moneySpent;}
-
     public Category getShouldBuy(){return shouldBuy;}
 
     public int getGuangCount(){ return guangCount;}

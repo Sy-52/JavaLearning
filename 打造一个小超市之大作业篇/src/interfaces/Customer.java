@@ -8,7 +8,7 @@ public interface Customer {
     String getCusId();
 
     /**
-     * @return 顾客消费了多少钱
+     * @return 顾客消费的总金额
      */
     double getMoneySpent();
 
@@ -27,7 +27,7 @@ public interface Customer {
      * @param merchandise 导购推荐的商品
      * @return 对于随缘顾客和带有明确目的的客户，返回值情况不同。
      */
-    int buyMerchandise(Merchandise merchandise);
+    int buyJudge(Merchandise merchandise);
 
     /**
      * 顾客还是否继续逛？（默认逛5次）
