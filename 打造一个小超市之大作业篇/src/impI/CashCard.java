@@ -3,6 +3,7 @@ package impI;
 import interfaces.Card;
 import interfaces.Customer;
 
+// >> TODO 思考题：怎么使用这个类才好呢？
 public class CashCard implements Card {
 
     private double point;

@@ -27,7 +27,6 @@ public class ShoppingCart {
         buy[curr] = m;
         count[curr] = countToBuy;
         curr++;
-        //标记一下下面这句
         m.buy(countToBuy);
         return true;
     }
@@ -38,9 +37,7 @@ public class ShoppingCart {
         int pos = -1;
         for(Merchandise m : buy){
             pos++;
-            if(m == null){
-                continue;
-            }
+            if(m == null){ continue; }
             ret += m.getSoldPrice() * count[pos];
         }
         return ret;

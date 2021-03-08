@@ -2,7 +2,6 @@ package util;
 
 import impI.*;
 import interfaces.*;
-
 import java.util.Scanner;
 
 public class ShoppingUtil {
@@ -18,7 +17,8 @@ public class ShoppingUtil {
     public static SimpleSuperMarket createSuperMarket(){
         int merchandisePerCategory = 10;
         // >> TODO 知识点：Merchandise接口中并没有构造方法，为什么能new？
-        Merchandise[] all = new Merchandise[Category.values().length * 10];
+        // >> TODO 下面为何用merchandisePerCategory而非用10去创建Merchanidse数组？
+        Merchandise[] all = new Merchandise[Category.values().length * merchandisePerCategory];
         for(Category category : Category.values()){
             for(int i = 0; i < merchandisePerCategory; i++){
                 double soldPrice = Math.random() * (category.getHigherPrice() - category.getLowerPrice()) + category.getLowerPrice();
@@ -33,7 +33,7 @@ public class ShoppingUtil {
         // >> TODO 知识点：引用指派。试着把下面三句拿到主程序中去。
         output("请输入超市的名字");
         String s = input().next();
-        if(s.length() > 0){ superMarket.setName(s.trim()); }
+        if(s.trim().length() > 0){ superMarket.setName(s.trim()); }
 
         return superMarket;
     }
@@ -50,6 +50,8 @@ public class ShoppingUtil {
                 return ret;
             }
         }
+        // >> TODO 思考题：允许输入一个类名，使用Class.forName(类名)，获得这个类的Class实例
+        // >> TODO 然后调用newInstance方法，创建这个类的实例
         return null;
     }
 

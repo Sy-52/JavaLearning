@@ -7,7 +7,7 @@ import static util.ShoppingUtil.output;
 public abstract class AbsShopman implements Shopman {
     private SuperMarket superMarket;
 
-    protected static int MAX_BUY_DEFAULT = 5;
+    protected static final int MAX_BUY_DEFAULT = 5;
 
     public AbsShopman(SuperMarket superMarket){ this.superMarket = superMarket; }
 

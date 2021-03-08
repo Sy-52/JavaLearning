@@ -7,7 +7,7 @@ public enum Category {
     CLOTHES(200,1000),
     ELECTRIC(200,10000);
 
-    private int lowerPrice;
+    int lowerPrice;
     private int higherPrice;
 
     Category(int lowerPrice, int higherPrice){

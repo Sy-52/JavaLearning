@@ -14,7 +14,7 @@ public abstract class AbsCustomer implements Customer{
     private int guangLeft;
     private int guangCount;
 
-    public static int DEFAULT_GUANG_COUNT = 5;
+    public static final int DEFAULT_GUANG_COUNT = 5;
 
     public AbsCustomer(String custId, Category shouldBuy, int guangCount){
         this.custId = custId;

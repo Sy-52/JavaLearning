@@ -15,7 +15,6 @@ public class SimpleSuperMarket implements SuperMarket{
         this.allMerchandise = all;
         allMerchandiseCount = new int[all.length];
         for(int i = 0; i < all.length; i++){
-            if(all[i] == null)continue;
             allMerchandiseCount[i] = all[i].getCount();
         }
     }

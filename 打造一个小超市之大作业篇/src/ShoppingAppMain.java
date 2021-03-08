@@ -1,10 +1,6 @@
 import impI.*;
 import interfaces.*;
-
-import static util.ShoppingUtil.output;
-import static util.ShoppingUtil.input;
-import static util.ShoppingUtil.createCustomer;
-import static util.ShoppingUtil.createSuperMarket;
+import static util.ShoppingUtil.*;
 
 public class ShoppingAppMain {
     public static void main(String[] args) {
