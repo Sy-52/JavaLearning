@@ -1,0 +1,43 @@
+import mylist.*;
+
+import java.util.*;
+
+public class UseListAppMain {
+    public static void main(String[] args) {
+        printCollection(addElementsToCollection(new ArrayList()));
+        printCollection(addElementsToCollection(new LinkedList()));
+
+        //printList((List)addElementsToCollection(new MyArrayList()));
+        //printList((List)addElementsToCollection(new MyLinkedList()));
+    }
+
+    public static Collection addElementsToCollection(Collection collection){
+        for(int i = 0; i < 10; i++){
+            // >> TODO 知识点：不用关心Collection接口是ArrayList/LinkedList/MYArrayList/MyLinkedList谁实现的,只要能实现添加元素的功能就好。
+            collection.add("str" + (i % 5));
+        }
+        return collection;
+    }
+
+    public static void printCollection(Collection collection){
+        System.out.println();
+        System.out.println("输出" + collection.getClass() + "中的元素，共" + collection.size() + "个");
+        // >> TODO 任何实现了Iterable接口的类都可以用for...each来遍历
+        try{
+            for(Object element : collection){
+                System.out.println(element);
+            }
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
+    public static void printList(List list){
+        System.out.println();
+        System.out.println("输出" + list.getClass() + "中的元素，共" + list.size() + "个");
+        // >> TODO 因为我们写的MYArrayList/MyLinkedList没有实现Iterable接口，所以不能使用for...each
+        for(int i = 0; i < list.size(); i++){
+            System.out.println(list.get(i));
+        }
+    }
+}
