@@ -2,7 +2,7 @@ import MyGeneric.MyGenericClass;
 
 import java.lang.reflect.Field;
 
-public class DefineGenericTypesAppMain {
+public class UseDefineGenericTypesMain {
     public static void main(String[] args) throws NoSuchFieldException {
         Field field = MyGenericClass.class.getDeclaredField("first");
         System.out.println("first的类型是：" + field.getType());

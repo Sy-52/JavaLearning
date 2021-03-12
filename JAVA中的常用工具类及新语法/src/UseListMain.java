@@ -2,7 +2,7 @@ import mylist.*;
 
 import java.util.*;
 
-public class UseListAppMain {
+public class UseListMain {
     public static void main(String[] args) {
         printCollection(addElementsToCollection(new ArrayList()));
         printCollection(addElementsToCollection(new LinkedList()));

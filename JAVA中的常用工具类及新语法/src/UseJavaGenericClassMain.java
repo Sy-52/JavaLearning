@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class UseJavaGenericClassAppMain {
+public class UseJavaGenericClassMain {
     public static void main(String[] args) {
         //useStringList();
         useStringListGenerics();

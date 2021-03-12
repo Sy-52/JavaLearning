@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class UseSetAppMain {
+public class UseSetMain {
     public static void main(String[] args) {
         // >> TODO Collection接口的另一重要实现类HashSet。顾名思义，HashSet借助了hash值来帮忙做去重。
         // >> TODO 每个Object实例都有hashCode()、equals()。这两个方法符合这样一个规定：equals()返回true，hashCode()返回值必须相等。
