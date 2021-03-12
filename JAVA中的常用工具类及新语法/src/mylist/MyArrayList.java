@@ -4,7 +4,7 @@ import java.util.*;
 
 // >> TODO MyArrayList只是为了展示如何用底层数据结构去实现一个更高层、更好用的数据结构...下面有些功能的实现并不完善。
 // >> TODO 而java提供了很多完善的接口的实现,如ArrayList、LinkedList
-public class MyArrayList implements List {
+public class MyArrayList<T> implements List<T> {
     private Object[] elements;
     //curr为计数器，表明当前元素加到什么地方了。
     private int curr;
@@ -38,16 +38,16 @@ public class MyArrayList implements List {
     }
 
     @Override
-    public Object get(int index) {
+    public T get(int index) {
         if(index > curr | index < 0){
             throw new IndexOutOfBoundsException("输入的索引 " + index + " 超出了边界 " + curr);
         }else{
-            return elements[index];
+            return (T)elements[index];
         }
     }
 
     @Override
-    public boolean add(Object o) {
+    public boolean add(T o) {
         if(curr == (elements.length - 1)){
             //这里应该有拷贝操作的...但是无所谓了
             elements = new Object[elements.length * 2];
@@ -59,7 +59,17 @@ public class MyArrayList implements List {
 
     // >> TODO 对于接口的一些方法，如果没有合适的方式去实现它，则可以抛一个UnsupportedOperationException异常。
     @Override
-    public Iterator iterator() { throw new UnsupportedOperationException(); }
+    public Iterator<T> iterator() {
+        return new Iterator<>() {
+            int pointer = 0;
+
+            @Override
+            public boolean hasNext() { return pointer < size(); }
+
+            @Override
+            public T next() { return (T)elements[pointer++]; }
+        };
+    }
 
     @Override
     public Object[] toArray() { throw new UnsupportedOperationException(); }
@@ -77,7 +87,7 @@ public class MyArrayList implements List {
     public Object set(int index, Object element) { throw new UnsupportedOperationException(); }
 
     @Override
-    public Object remove(int index) { throw new UnsupportedOperationException(); }
+    public T remove(int index) { throw new UnsupportedOperationException(); }
 
     @Override
     public int indexOf(Object o) { throw new UnsupportedOperationException(); }
