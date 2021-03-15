@@ -4,11 +4,11 @@ import java.util.*;
 
 public class UseListMain {
     public static void main(String[] args) {
-        printCollection(addElementsToCollection(new ArrayList()));
-        printCollection(addElementsToCollection(new LinkedList()));
+//        printCollection(addElementsToCollection(new ArrayList()));
+//        printCollection(addElementsToCollection(new LinkedList()));
 
-        //printList((List)addElementsToCollection(new MyArrayList()));
-        //printList((List)addElementsToCollection(new MyLinkedList()));
+        printList((List)addElementsToCollection(new MyArrayList()));
+//        printList((List)addElementsToCollection(new MyLinkedList()));
     }
 
     public static Collection addElementsToCollection(Collection collection){
@@ -33,11 +33,18 @@ public class UseListMain {
     }
 
     public static void printList(List list){
-        System.out.println();
         System.out.println("输出" + list.getClass() + "中的元素，共" + list.size() + "个");
         // >> TODO 因为我们写的MYArrayList/MyLinkedList没有实现Iterable接口，所以不能使用for...each
-        for(int i = 0; i < list.size(); i++){
-            System.out.println(list.get(i));
+//        for(int i = 0; i < list.size(); i++){
+//            System.out.println(list.get(i));
+//        }
+        // >> TODO 在MyArrayList实现了Iterator接口后，我们便可以使用for...each进行遍历
+        try {
+            for (Object element : list) {
+                System.out.println(element);
+            }
+        }catch (Exception ex){
+            ex.printStackTrace();
         }
     }
 }

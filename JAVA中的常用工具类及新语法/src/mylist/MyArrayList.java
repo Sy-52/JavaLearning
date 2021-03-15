@@ -3,7 +3,7 @@ package mylist;
 import java.util.*;
 
 // >> TODO MyArrayList只是为了展示如何用底层数据结构去实现一个更高层、更好用的数据结构...下面有些功能的实现并不完善。
-// >> TODO 而java提供了很多完善的接口的实现,如ArrayList、LinkedList
+// >> TODO 而java提供了很多完善的接口实现类,如ArrayList、LinkedList
 public class MyArrayList<T> implements List<T> {
     private Object[] elements;
     //curr为计数器，表明当前元素加到什么地方了。
@@ -57,7 +57,7 @@ public class MyArrayList<T> implements List<T> {
         return true;
     }
 
-    // >> TODO 对于接口的一些方法，如果没有合适的方式去实现它，则可以抛一个UnsupportedOperationException异常。
+    // >> TODO 实现Iterator接口，使该类支持for...each循环。
     @Override
     public Iterator<T> iterator() {
         return new Iterator<>() {
@@ -71,6 +71,7 @@ public class MyArrayList<T> implements List<T> {
         };
     }
 
+    // >> TODO 对于接口的一些方法，如果没有合适的方式去实现它，则可以抛一个UnsupportedOperationException异常。
     @Override
     public Object[] toArray() { throw new UnsupportedOperationException(); }
 
