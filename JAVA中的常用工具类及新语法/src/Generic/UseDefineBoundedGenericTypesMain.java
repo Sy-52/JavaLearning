@@ -1,4 +1,6 @@
-import MyGeneric.MyGenericClassBounded;
+package Generic;
+
+import Generic.MyGenericClassBounded;
 
 import java.lang.reflect.Field;
 

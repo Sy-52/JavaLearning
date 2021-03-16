@@ -32,7 +32,7 @@ public class IterateListLambdaMain {
 //        myList.forEach(str -> processString(outside + str));
         // >> TODO lambda终极简化版：如果你不需要访问外部变量，只跑个方法。那（类名::方法名）即可。
         myList.forEach(IterateListLambdaMain::processString);
-        // >> TODO 如果调实例方法，可以像这样new一个实例去用
+        // >> TODO 如果调实例方法，可以像这样new一个方法所在的类的实例去调
 //        IterateListLambdaMain inst = new IterateListLambdaMain();
 //        myList.forEach(inst::processStringNonStatic);
         // >> TODO 我们和java如果知道forEach中的每个元素都是String类型，则可以调它的实例方法。可用如下格式。

@@ -1,4 +1,4 @@
-package MyGeneric;
+package Generic;
 
 import ext.GrandParent;
 

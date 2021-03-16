@@ -1,4 +1,4 @@
-package MyGeneric;
+package Generic;
 
 // >> TODO 泛型类的定义，如下
 public class MyGenericClass<First, Second> {

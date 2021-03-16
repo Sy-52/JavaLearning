@@ -1,4 +1,6 @@
-import MyGeneric.MyGenericClass;
+package Generic;
+
+import Generic.MyGenericClass;
 
 import java.lang.reflect.Field;
 
