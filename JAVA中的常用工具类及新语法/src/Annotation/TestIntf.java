@@ -1,4 +1,4 @@
-package annotation;
+package Annotation;
 
 public interface TestIntf {
     void test();

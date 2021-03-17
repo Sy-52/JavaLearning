@@ -1,4 +1,4 @@
-package annotation;
+package Annotation;
 
 public class UseAnnotation {
     // >> TODO 该注解是不能用在FIELD(变量)上的，否则会出错

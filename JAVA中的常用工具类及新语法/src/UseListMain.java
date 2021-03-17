@@ -1,4 +1,4 @@
-import mylist.*;
+import MyList.*;
 
 import java.util.*;
 

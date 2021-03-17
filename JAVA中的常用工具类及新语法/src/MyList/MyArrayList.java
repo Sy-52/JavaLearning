@@ -1,84 +1,77 @@
-package mylist;
+package MyList;
 
 import java.util.*;
 
-public class MyLinkedList implements List {
-    static class ListNode{
-        ListNode prev;
-        ListNode next;
-        Object value;
+// >> TODO MyArrayList只是为了展示如何用底层数据结构去实现一个更高层、更好用的数据结构...下面有些功能的实现并不完善。
+// >> TODO 而java提供了很多完善的接口实现类,如ArrayList、LinkedList
+public class MyArrayList<T> implements List<T> {
+    private Object[] elements;
+    //curr为计数器，表明当前元素加到什么地方了。
+    private int curr;
 
-        public ListNode(ListNode prev, ListNode next, Object value){
-            this.prev = prev;
-            this.next = next;
-            this.value = value;
-        }
-    }
-
-    private ListNode start;
-    private ListNode tail;
-    private int size;
-
-    public MyLinkedList(){
-        this.start = null;
-        this.tail = null;
-        this.size = 0;
+    public MyArrayList(){
+        elements = new Object[16];
+        curr = 0;
     }
 
     @Override
     //size()：链表中有多少个元素？
-    public int size() { return size; }
+    public int size() { return curr; }
 
     @Override
-    public boolean isEmpty() { return size == 0; }
+    public boolean isEmpty() { return curr == 0; }
 
     @Override
     //contains()：给定一个元素，判断该元素在链表中是否存在？
     public boolean contains(Object o) {
-        ListNode curr = start;
-        while(curr != null){
-            if(Objects.equals(curr.value, o)){
+        for(Object ele : elements){
+            if(Objects.equals(ele,o)){
                 return true;
             }
-            curr = curr.next;
         }
         return false;
     }
 
     @Override
     public void clear() {
-        start = null;
-        tail = null;
-        size = 0;
+        curr = 0;
     }
 
     @Override
-    public Object get(int index) {
-        if(index > size | index < 0){
-            throw new IndexOutOfBoundsException("输入的索引 " + index + " 超出了边界 " + size);
+    public T get(int index) {
+        if(index > curr | index < 0){
+            throw new IndexOutOfBoundsException("输入的索引 " + index + " 超出了边界 " + curr);
+        }else{
+            return (T)elements[index];
         }
-        ListNode curr = start;
-        for(int i = 0; i < index; i++){
-            curr = curr.next;
-        }
-        return curr.value;
     }
 
     @Override
-    public boolean add(Object o) {
-        ListNode newNode = new ListNode(tail,null,o);
-        //要考虑链表本身为空的情况
-        if(start == null) { start = newNode;}
-        if(tail != null){tail.next = newNode;}
-        tail = newNode;
-        size++;
+    public boolean add(T o) {
+        if(curr == (elements.length - 1)){
+            //这里应该有拷贝操作的...但是无所谓了
+            elements = new Object[elements.length * 2];
+        }
+        elements[curr] = o;
+        curr++;
         return true;
     }
 
-    // >> TODO 对于一些接口的方法，如果没有合适的方式去实现，可以抛UnsupportedOperationException异常。
+    // >> TODO 实现Iterator接口，使该类支持for...each循环。
     @Override
-    public Iterator iterator() { throw new UnsupportedOperationException(); }
+    public Iterator<T> iterator() {
+        return new Iterator<>() {
+            int pointer = 0;
 
+            @Override
+            public boolean hasNext() { return pointer < size(); }
+
+            @Override
+            public T next() { return (T)elements[pointer++]; }
+        };
+    }
+
+    // >> TODO 对于接口的一些方法，如果没有合适的方式去实现它，则可以抛一个UnsupportedOperationException异常。
     @Override
     public Object[] toArray() { throw new UnsupportedOperationException(); }
 
@@ -95,7 +88,7 @@ public class MyLinkedList implements List {
     public Object set(int index, Object element) { throw new UnsupportedOperationException(); }
 
     @Override
-    public Object remove(int index) { throw new UnsupportedOperationException(); }
+    public T remove(int index) { throw new UnsupportedOperationException(); }
 
     @Override
     public int indexOf(Object o) { throw new UnsupportedOperationException(); }

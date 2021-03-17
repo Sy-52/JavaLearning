@@ -1,4 +1,4 @@
-package annotation;
+package Annotation;
 
 public class CommonAnnotations implements TestIntf{
     @Override
