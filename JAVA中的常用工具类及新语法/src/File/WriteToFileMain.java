@@ -34,6 +34,7 @@ public class WriteToFileMain {
                 // >> TODO 装饰模式（"套娃"模式），osw帮我们把charactor按照字符集转成byte，pw帮我们把string转为char。
                 FileOutputStream fos = new FileOutputStream(file);
                 // >> TODO 计算机的处理的都是byte。如果把搜集常用charactor做一个和byte的映射，就是字符集。
+                // >> TODO OutputStreamWriter是Writer这个抽象类的实现类，是连接byte和charactor的桥梁。
                 OutputStreamWriter osw = new OutputStreamWriter(fos, StandardCharsets.UTF_8);
                 PrintWriter pw = new PrintWriter(osw);
                 ){
