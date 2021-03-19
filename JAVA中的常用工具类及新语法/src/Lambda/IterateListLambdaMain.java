@@ -24,28 +24,25 @@ public class IterateListLambdaMain {
 //            }
 //        });
 
-        // >> TODO Lambda完整版：(形参) -> {代码块}
-        // >> TODO Lambda表达式必须能够符合接口中定义的抽象方法(参数、返回值、异常都必须匹配）
-        // >> TODO 只要符合方法对接口的要求，就可以不在乎那些细节(有无接口名、accept...都不管)
-//        myList.forEach((str) -> {processString(outside + str);});
-        // >> TODO lambda简化版：如果只有单个代码行，可省略大括号、分号
+        // >> TODO 函数式编程是把函数作为基本运算单元。函数可作为变量、可接受函数、可返回函数。把支持函数式编程的编码风格称为Lambda表达式。
+        // >> TODO 用lambda表达式去替代繁琐的只有单个抽象方法的接口。参数类型、返回值类型编译器可自动推断，故可以省略。
+//        myList.forEach((str) -> {  processString(outside + str);  });
 //        myList.forEach(str -> processString(outside + str));
-        // >> TODO lambda终极简化版：如果你不需要访问外部变量，只跑个方法。那（类名::方法名）即可。
+        // >> TODO 若某方法的参数类型、返回值类型和接口中定义的抽象方法一样，我们也可直接传入方法引用。
         myList.forEach(IterateListLambdaMain::processString);
-        // >> TODO 如果调实例方法，可以像这样new一个方法所在的类的实例去调
+        // >> TODO 实例方法调用时第一个隐藏参数会传入this。我们可以可以像这样new一个类的实例去调实例方法。
 //        IterateListLambdaMain inst = new IterateListLambdaMain();
 //        myList.forEach(inst::processStringNonStatic);
-        // >> TODO 我们和java如果知道forEach中的每个元素都是String类型，则可以调它的实例方法。可用如下格式。
-//        myList.forEach(String::toUpperCase);
+        // >> TODO toUpperCase为String的实例方法，传入一个参数。
+        myList.forEach(String::toUpperCase);
         System.out.println();
 
         Map<String, String> myMap = new HashMap<>();
         myMap.put("k1","v1");
         myMap.put("k2","v2");
         myMap.put("k3","v3");
-        // >> TODO 方法形参为两个的情况，用如下格式
+        // >> TODO Map的forEach和List的forEach又不一样了。
         myMap.forEach((k,v) -> processTwoStrings(k,v));
-        // >> TODO 参数的顺序是按规定的顺序来的，所以可以省略参数
         myMap.forEach(IterateListLambdaMain::processTwoStrings);
     }
 
