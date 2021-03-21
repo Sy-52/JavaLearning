@@ -10,7 +10,7 @@ public class LearnMapMain {
         System.out.println(map.get("key30"));
         System.out.println();
 
-        // >> TODO 每一种map都有自己的规范。有的key/value为null就不行，但是hashMap支持key、value为null。
+        // >> TODO 每一种map都有自己的规范。有些map的key/value为null就不行，但hashMap支持key、value为null。
         map.put(null , "null key的value");
         map.put("null值的key" , null);
         System.out.println("null key的值为：" + map.get(null));
@@ -26,7 +26,7 @@ public class LearnMapMain {
 
         // >> TODO map的遍历
         System.out.println("------------- 遍历keyvalue对 -------------");
-        // >> TODO 一个键值对是一个Entry接口实现类的实例，因为key不重复，所以实例们组成了entrySet。这里用Map中的内部类Entry引用指向实例。
+        // >> TODO 详情用ctrl + f12.这里用Map中的内部接口Entry引用的指向实例。
         for(Map.Entry<String, String> entry : map.entrySet()){
             System.out.println("Key为：" + entry.getKey() + "，value为：" + entry.getValue());
         }
@@ -38,8 +38,6 @@ public class LearnMapMain {
         for(String key : map.keySet()){
             System.out.println(key);
         }
-
-        // >> TODO 为什么能用HashMap来实现HashSet?如果我们不关注value，只关注key，不就是一个Set了吗？
     }
 
     public static Map<String, String> createMap(int size){

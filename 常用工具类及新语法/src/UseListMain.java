@@ -13,7 +13,7 @@ public class UseListMain {
 
     public static Collection addElementsToCollection(Collection collection){
         for(int i = 0; i < 10; i++){
-            // >> TODO 知识点：不用关心Collection接口是ArrayList/LinkedList/MYArrayList/MyLinkedList谁实现的,只要能实现添加元素的功能就好。
+            // >> TODO 知识点：不用关心Collection接口是ArrayList/LinkedList/MYArrayList/MyLinkedList谁实现的,我们关心能否实现添加元素功能就好。
             collection.add("str" + (i % 5));
         }
         return collection;
@@ -34,7 +34,7 @@ public class UseListMain {
 
     public static void printList(List list){
         System.out.println("输出" + list.getClass() + "中的元素，共" + list.size() + "个");
-        // >> TODO 因为我们写的MYArrayList/MyLinkedList没有实现Iterable接口，所以不能使用for...each
+        //因为我们写的MYArrayList/MyLinkedList没有实现Iterable接口，所以不能使用for...each
 //        for(int i = 0; i < list.size(); i++){
 //            System.out.println(list.get(i));
 //        }

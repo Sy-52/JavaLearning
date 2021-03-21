@@ -8,9 +8,10 @@ public class ReadFromFileMain {
     private static final String SOURCE_FILE_NAME = "游仙人诗.txt";
 
     public static void main(String[] args) {
-        File sourceFile = new File("G:\\Test" + File.separator + SOURCE_FILE_NAME);
+        File sourceFile = new File("G:",File.separator + "Test" + File.separator + SOURCE_FILE_NAME);
 
-        // >> TODO inputStream只能读取标准输入里的byte，而Scanner可以将这个byte读取出来转换为String，进而转换成不同的数据类型。
+        // TODO "inputStream只能读取标准输入里的byte，而Scanner可以将这个byte读取出来转换为String，进而转换成不同的数据类型。"
+        // TODO 臧萌老师说的这句话似懂非懂，下面这句代码还需研究。
         Scanner in = new Scanner(System.in);
 
         //classicWay(sourceFile);
@@ -22,9 +23,9 @@ public class ReadFromFileMain {
         try(
                 // >> TODO 建立从文件->程序的input流
                 FileInputStream fis = new FileInputStream(file);
-                // >> TODO 用指定的字符集装饰一下byte流，使之将读出的byte转为字符
+                // >> TODO 用指定的字符集装饰byte流，将读出的byte转为charactor
                 InputStreamReader isr = new InputStreamReader(fis, StandardCharsets.UTF_8);
-                // >> TODO BufferedReader是Reader抽象类的实现类，是一个对字节流的封装类（字符流）。
+                // >> TODO BufferedReader是Reader抽象类的实现类，是一个对字节流的封装类（->字符流）。
                 // >> TODO 一次可能读取大量的数据，用缓存将读取的数据存起来，你要用多少给多少
                 BufferedReader reader = new BufferedReader(isr);
                 ){

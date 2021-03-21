@@ -9,7 +9,7 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class CreateDirAndFileMain {
-    // >> TODO "."表示当前程序运行的路径。
+    // >> TODO "."表示当前程序运行的路径。File.separator表示OS的文件路径分隔符。
     private static final String ROOT = "G:" + File.separator + "Test";
     private static final Scanner scanner = new Scanner(System.in);
 
@@ -62,6 +62,7 @@ public class CreateDirAndFileMain {
     private static File renameDir(File oldDir){
         System.out.println("请输入新的文件夹的名字：");
         String restDir = scanner.nextLine().trim();
+        // TODO 为什么功能为更改"最后"一级目录的名称，谜底就在getParentFile方法.
         File renameDir = new File(oldDir.getParentFile(), restDir);
         boolean renameSuccess = oldDir.renameTo(renameDir);
         if(renameSuccess){

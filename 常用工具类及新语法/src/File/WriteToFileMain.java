@@ -46,7 +46,7 @@ public class WriteToFileMain {
                     break;
                 }else{
                     pw.println(input);
-                    // >> TODO flush用以将缓存的内容全部写入文件。（通常写入足够数量的字节后才会一起写入文件。如果输入字符少，会导致无法实时显示）
+                    // >> TODO flush用以将缓存的内容全部写入文件。（通常写入足够数量字节后才会一起写入文件。如果输入字符少，会导致无法实时显示）
                     pw.flush();
                 }
             }
