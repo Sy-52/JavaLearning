@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d32001a0-4544-4619-8ef1-55bcc482c21d" name="Default Changelist" comment="">
+    <list default="true" id="aba43bf6-cce8-408c-8725-fa2960d1cfd2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../../人工不智能聊天小程序/.idea/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../人工不智能聊天小程序/.idea/misc.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../人工不智能聊天小程序/.idea/modules.xml" beforeDir="false" />
@@ -25,25 +25,32 @@
       <change beforePath="$PROJECT_DIR$/../../常用工具类及新语法/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../常用工具类及新语法/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../常用工具类及新语法/常用工具类和新语法.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../异常处理.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../异常处理.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../成绩管理小程序/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../成绩管理小程序/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../成绩管理小程序/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../成绩管理小程序/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../成绩管理小程序/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../成绩管理小程序/成绩管理小程序.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../成绩管理小程序/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../成绩管理小程序/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../成绩管理小程序/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../成绩管理小程序/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../成绩管理小程序/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../成绩管理小程序/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../成绩管理小程序/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../成绩管理小程序/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../成绩管理小程序/成绩管理小程序.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../成绩管理小程序/成绩管理小程序.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../打造一个小超市小程序/.idea/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../打造一个小超市小程序/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../打造一个小超市小程序/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../打造一个小超市小程序/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../打造一个小超市小程序/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../打造一个小超市小程序/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../打造一个小超市小程序/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../打造一个小超市小程序/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../打造一个小超市小程序/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../打造一个小超市小程序/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../打造一个小超市小程序/打造一个小超市小程序.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../猜数字小游戏.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../打造一个小超市小程序/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../打造一个小超市小程序/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../打造一个小超市小程序/打造一个小超市小程序.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../打造一个小超市小程序/打造一个小超市小程序.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../猜数字小游戏/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../猜数字小游戏/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../猜数字小游戏/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../猜数字小游戏/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../猜数字小游戏/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../猜数字小游戏/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../猜数字小游戏/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../猜数字小游戏/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../猜数字小游戏/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../猜数字小游戏/猜数字小游戏.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../猜数字小游戏/猜数字小游戏.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../线程/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../线程/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../线程/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../线程/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../线程/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../线程/.idea/vcs.xml" afterDir="false" />
@@ -103,7 +110,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="ProjectId" id="1qVP1avS2a9vWok2bap7OOPMTtp" />
+  <component name="ProjectId" id="1qVPJfetCR6RCwp4l56W6njJNcs" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
@@ -119,11 +126,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d32001a0-4544-4619-8ef1-55bcc482c21d" name="Default Changelist" comment="" />
-      <created>1617161569848</created>
+      <changelist id="aba43bf6-cce8-408c-8725-fa2960d1cfd2" name="Default Changelist" comment="" />
+      <created>1617161713551</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1617161569848</updated>
+      <updated>1617161713551</updated>
     </task>
     <servers />
   </component>
