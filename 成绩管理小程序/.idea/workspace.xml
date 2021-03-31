@@ -1,9 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e125f7f2-5743-4e5b-b1cf-ca9951fb1c6f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../人工不智能聊天小程序/.idea/src.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../人工不智能聊天小程序/.idea/src.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../人工不智能聊天小程序/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../人工不智能聊天小程序/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../人工不智能聊天小程序/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../人工不智能聊天小程序/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../双人对战五子棋小游戏/.idea/src.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../双人对战五子棋小游戏/.idea/src.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../双人对战五子棋小游戏/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../双人对战五子棋小游戏/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../双人对战五子棋小游戏/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../双人对战五子棋小游戏/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../常用工具类及新语法/.idea/src.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../常用工具类及新语法/.idea/src.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../常用工具类及新语法/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../常用工具类及新语法/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../异常处理/.idea/src.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../异常处理/.idea/src.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../异常处理/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../异常处理/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../异常处理/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../异常处理/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/src.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/src.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1qVSE7y0HJ3ZwXulPnYpgEJgYNA" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e125f7f2-5743-4e5b-b1cf-ca9951fb1c6f" name="Default Changelist" comment="" />
+      <created>1617163150011</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1617163150011</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="460" y="104" key="FileChooserDialogImpl" timestamp="1617163163629">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="460" y="104" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1617163163629" />
+    <state x="163" y="0" key="SettingsEditor" timestamp="1617163166237">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="163" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1617163166237" />
   </component>
 </project>
