@@ -15,7 +15,7 @@ public class SimpleServer {
     }
 
     private static void commWithClient() throws IOException {
-        // >> TODO 所有在小括号()中创建Closeable的对象在try语句执行完毕后都会被close掉。
+        // >> TODO 所有在小括号()中创建的Closeable的实例，在try语句执行完毕后都会被close掉。
         try (
                 ServerSocket ss = new ServerSocket(SERVER_PORT);
                 // >> TODO 如果客户端不连接，服务器端就一直卡在这里。

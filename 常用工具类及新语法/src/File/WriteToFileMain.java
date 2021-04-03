@@ -33,7 +33,7 @@ public class WriteToFileMain {
         try(
                 // >> TODO 装饰模式（"套娃"模式），osw帮我们把charactor按照字符集转成byte，pw帮我们把string转为char。
                 FileOutputStream fos = new FileOutputStream(file);
-                // >> TODO 计算机的处理的都是byte。如果把搜集常用charactor做一个和byte的映射，就是字符集。
+                // >> TODO 计算机的处理的都是byte。如果把常用charactor做一个和byte的映射，就是字符集。
                 // >> TODO OutputStreamWriter是Writer这个抽象类的实现类，是连接byte和charactor的桥梁。
                 OutputStreamWriter osw = new OutputStreamWriter(fos, StandardCharsets.UTF_8);
                 PrintWriter pw = new PrintWriter(osw);
@@ -46,7 +46,7 @@ public class WriteToFileMain {
                     break;
                 }else{
                     pw.println(input);
-                    // >> TODO flush用以将缓存的内容全部写入文件。（通常写入足够数量字节后才会一起写入文件。如果输入字符少，会导致无法实时显示）
+                    // >> TODO flush用以将缓存的内容全部写入文件。（写入数据通常会写满缓冲区后再一次性输出到目的地。如果这里输入的字符少，会导致无法实时显示）
                     pw.flush();
                 }
             }

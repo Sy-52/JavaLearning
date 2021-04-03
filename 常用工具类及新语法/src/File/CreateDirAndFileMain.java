@@ -9,7 +9,7 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class CreateDirAndFileMain {
-    // >> TODO "."表示当前程序运行的路径。File.separator表示OS的文件路径分隔符。
+    // >> TODO "."表示当前程序运行的路径。File.separator表示当前操作系统的文件路径分隔符。
     private static final String ROOT = "G:" + File.separator + "Test";
     private static final Scanner scanner = new Scanner(System.in);
 
@@ -31,7 +31,7 @@ public class CreateDirAndFileMain {
         List<String> pathList = new ArrayList<>();
         while(true) {
             System.out.println("请输入文件路径，如果直接输入回车，结束。");
-            // >> TODO nextLine可获取到按回车之前的所有字符，可带空格。
+            // >> TODO nextLine可获取到按回车之前的所有字符，可带空格。与next不同。
             String path = scanner.nextLine();
             if(path.isBlank()){ break; }
             pathList.add(path);
@@ -41,7 +41,7 @@ public class CreateDirAndFileMain {
     }
 
     private static File createDir(String... restPaths){
-        // >> TODO Arrays.stream(数组/Collection)会创建一个Stream类的实例
+        // >> TODO Arrays.stream(数组实例/Collection实例)会创建一个Stream类的实例
         String restDir = Arrays.stream(restPaths).map(String::trim).collect(Collectors.joining(File.separator));
         System.out.println("将在" + ROOT + "下创建" + restDir);
         File dir = new File(ROOT, restDir);

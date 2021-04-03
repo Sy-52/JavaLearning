@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b8ed8c2-0530-42a3-a997-c802cec9ad65" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/src.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/src.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/File/CreateDirAndFileMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/File/CreateDirAndFileMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/File/ReadFromFileMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/File/ReadFromFileMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/File/WriteToFileMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/File/WriteToFileMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Socket/SimpleServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Socket/SimpleServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +24,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -49,5 +52,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1617163011951" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1617436159792">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1617436159792" />
   </component>
 </project>
