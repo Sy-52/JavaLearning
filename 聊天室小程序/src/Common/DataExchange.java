@@ -9,7 +9,6 @@ public class DataExchange {
     private Socket socket;
     private BufferedReader reader;
     private PrintWriter writer;
-    private Boolean isClosed = false;
 
     public DataExchange(Socket socket) throws IOException {
         this.socket = socket;
@@ -22,7 +21,7 @@ public class DataExchange {
     }
 
     public void send(MessagePackage messagePackage){
-        writer.println(messagePackage.toMessageString());
+        writer.println(messagePackage.MessagePackageToString());
         writer.flush();
     }
 
@@ -45,14 +44,16 @@ public class DataExchange {
             e.printStackTrace();
         }
 
-        writer.close();
+        try {
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         try {
             socket.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        isClosed = true;
     }
 }

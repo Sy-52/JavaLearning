@@ -11,19 +11,17 @@ public interface Constants {
 
     char MESSAGE_SEP = Character.UNASSIGNED;
 
-    char MESSAGE_BREAK = '\n';
-    // TODO 在网络对话中，空格是一个有特殊意义的分隔符。
-    String SPACE_MESSAGE = " ";
+    String SPACE_STRING = " ";
 
     String CHAT_START_CHARACTOR = "@";
 
     String ADMIN_NAME = "admin";
 
-    String INTRODUCTION = "欢迎来到聊天室，你可以使用\"@admin list\"来产看所有在线用户，并且使用\"@用户民\"进行聊天。";
+    String USERNAME_PASS_FLAG = "userNamePass";
+
+    String INTRODUCTION = "欢迎来到聊天室!你可以使用\"@admin list\"来查看所有在线用户，并使用\"@用户名\"命令进行聊天。";
 
     String SERVER_COMMAND_LOGOFF = "logoff";
 
     String SERVER_COMMAND_LIST = "list";
-
-    String BYE = "bye";
 }

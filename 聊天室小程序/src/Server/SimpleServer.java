@@ -17,9 +17,9 @@ import static Common.Constants.*;
 
 public class SimpleServer {
     private int port;
-    // TODO 为每个连接到服务器的用户，建立用户名->DataExchange的映射关系，便于服务器端转发消息。
+    // TODO 在服务器端，用map存储"已连接的用户 -> 其对应的DataExchange的映射"。
     private Map<String, DataExchange> userNameToDataExchange = new ConcurrentHashMap<>();
-    // TODO Executors.newCachedThreadPool返回的也是一个TreadPoolExecutor的实例，不过线程池配置不同。
+    // TODO 用Executors.newCachedThreadPool返回一个线程池配置不同的TreadPoolExecutor实例。
     private ExecutorService service = Executors.newCachedThreadPool();
 
     public SimpleServer(int port){this.port = port;}
@@ -27,12 +27,10 @@ public class SimpleServer {
     public void start() throws IOException {
         System.out.println("服务器已启动...");
         ServerSocket ss = new ServerSocket(SERVER_PORT);
-        while(true){
-            Socket socket = ss.accept();
-            // TODO 一个线程服务一个连接，是java网络通讯的经典模式。
-            // TODO 只要有客户端连过来，就把它扔给一个新的线程去执行。只要客户端不退出，线程就不结束。
-            service.submit(new ClientHandler(socket));
-        }
+        // TODO 这里由于我还没学习Java Swing，所以暂且不在外面套while循环，以便测试。
+        Socket socket = ss.accept();
+        // TODO 只要有客户端连过来，就把它扔给一个新的线程去执行。只要客户端不退出，线程就不结束。一个线程服务一个连接，是java网络通讯的经典模式。
+        service.submit(new ClientHandler(socket));
     }
 
     class ClientHandler implements Runnable{
@@ -50,7 +48,7 @@ public class SimpleServer {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
+            // TODO 先针对客户端的用户名进行一轮网络传输，将确定好的userName保存好。
             initUser(dataExchange);
 
             while(true){
@@ -60,7 +58,7 @@ public class SimpleServer {
                     if(toName.equalsIgnoreCase(ADMIN_NAME)){
                         handleServerCommand(messagePackage);
                     }else{
-                        handleChatMessage(dataExchange, messagePackage);
+                        handleMessagePackage(dataExchange, messagePackage);
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -71,12 +69,11 @@ public class SimpleServer {
         }
 
         private void initUser(DataExchange dataExchange){
+            String errorMessage = null;
             while(true){
-                String errorMessage = null;
                 String allUserNames = getAllUserNames();
-                dataExchange.send(new MessagePackage(ADMIN_NAME, "Anonymous", (errorMessage == null?"" : "现有用户名："
-                        + allUserNames + ". 请输入你的用户名：")));
-
+                dataExchange.send(new MessagePackage(ADMIN_NAME, "Anonymous", (errorMessage == null?"现有用户名："
+                        + allUserNames + ".请输入你的用户名：" : "")));
                 try {
                     MessagePackage messagePackage = dataExchange.receive();
                     String userName = messagePackage.getMessage();
@@ -84,6 +81,7 @@ public class SimpleServer {
                     if(errorMessage == null && (!userNameToDataExchange.containsKey(userName))){
                         this.userName = userName;
                         userNameToDataExchange.put(userName, dataExchange);
+                        dataExchange.send(new MessagePackage(ADMIN_NAME, userName, USERNAME_PASS_FLAG));
                         dataExchange.send(new MessagePackage(ADMIN_NAME, userName, INTRODUCTION));
                         return;
                     }
@@ -106,20 +104,23 @@ public class SimpleServer {
         }
 
         private void handleServerCommand(MessagePackage messagePackage){
-            DataExchange client = userNameToDataExchange.get(messagePackage.getFrom());
+            DataExchange clientDataExchange = userNameToDataExchange.get(messagePackage.getFrom());
             String command = messagePackage.getMessage();
 
             if(command.equalsIgnoreCase(SERVER_COMMAND_LOGOFF)){
-                client.send(new MessagePackage(ADMIN_NAME, messagePackage.getFrom(), BYE));
-                client.close();
+                clientDataExchange.send(new MessagePackage(ADMIN_NAME, messagePackage.getFrom(), "bye"));
+                clientDataExchange.close();
+                userNameToDataExchange.remove(messagePackage.getFrom());
                 System.out.println("用户\"" + messagePackage.getFrom() + "\"离开了聊天室...");
             }else if(command.equalsIgnoreCase(SERVER_COMMAND_LIST)){
                 String allUserNames = getAllUserNames();
-                client.send(new MessagePackage(ADMIN_NAME, messagePackage.getFrom(), "当前在线用户：" + allUserNames));
+                clientDataExchange.send(new MessagePackage(ADMIN_NAME, messagePackage.getFrom(), "当前在线用户：" + allUserNames));
+            }else{
+                clientDataExchange.send(new MessagePackage(ADMIN_NAME, messagePackage.getFrom(), "服务器暂时不支持聊天，后续功能敬请期待！"));
             }
         }
 
-        private void handleChatMessage(DataExchange dataExchange, MessagePackage messagePackage){
+        private void handleMessagePackage(DataExchange dataExchange, MessagePackage messagePackage){
             DataExchange toAnother = userNameToDataExchange.get(messagePackage.getTo());
             if(toAnother == null){
                 dataExchange.send(new MessagePackage(ADMIN_NAME, messagePackage.getFrom(), "用户名\"" + messagePackage.getTo() + "不存在！"));

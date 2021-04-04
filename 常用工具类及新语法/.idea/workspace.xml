@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8b8ed8c2-0530-42a3-a997-c802cec9ad65" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/File/CreateDirAndFileMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/File/CreateDirAndFileMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/File/ReadFromFileMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/File/ReadFromFileMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/File/WriteToFileMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/File/WriteToFileMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Socket/SimpleServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Socket/SimpleServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
