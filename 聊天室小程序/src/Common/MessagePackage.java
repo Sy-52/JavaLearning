@@ -36,6 +36,7 @@ public class MessagePackage {
         return ret.toString();
     }
 
+    //generate了Object类的两个方法.
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
