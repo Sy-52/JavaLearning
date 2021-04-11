@@ -32,7 +32,7 @@ public class MessagePackage {
     // TODO MessagePackageToString方法会将一个ChatMessage实例的各组成部分拼接为一个完整的字符串，然后返回。
     public String MessagePackageToString(){
         StringBuilder ret = new StringBuilder();
-        ret.append(from).append(MESSAGE_SEP).append(to).append(MESSAGE_SEP).append(message).append(MESSAGE_BREAK);
+        ret.append(from).append(MESSAGE_SEP).append(to).append(MESSAGE_SEP).append(message).append("\n");
         return ret.toString();
     }
 
